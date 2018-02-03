@@ -16,10 +16,10 @@ __Done__
 - Use more columns if screen is big
 - Upload to github
 - Remove only this session (hide)
+- Remove permanently (delete) from local storage
 
 __Not done__
 
-- Remove permanently (delete) from local storage
 - Add unit tests for reducers
 - Show less columns on medium sizes
 - Click to enlarge image

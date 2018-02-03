@@ -32,7 +32,10 @@ class Viewer extends React.Component {
 		return (
 			<div className="Viewer">
 				{items.map((item, i) => 
-					<Item key={i} {...item} onCloseClick={this.handleCloseClick} />
+					<Item 
+						key={item.id} 
+						{...item} 
+						onCloseClick={this.handleCloseClick} />
 				)}
 			</div>
 		);

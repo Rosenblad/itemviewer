@@ -27,22 +27,6 @@ a.content {
 	color: inherit;
 }
 
-.close {
-	position: absolute;
-	top: 28px;
-	right: 28px;
-	width: 12px;
-	fill: black;
-	opacity: 0.4;
-	z-index: 2000;
-	transition: opacity 225ms ease-in-out;
-	cursor: pointer;
-}
-
-.close:hover {
-	opacity: 0.2;
-}
-
 .image {
 	margin-bottom: 16px;
 	user-select: none;

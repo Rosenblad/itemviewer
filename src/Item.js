@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Actions from './Item/Actions';
 import './Item.css';
-import Close from './Item/Close';
 
 const Item = props => {
 
@@ -26,17 +26,9 @@ const Item = props => {
 		Component = 'div';
 	}
 
-	const handleCloseClick = e => {
-		if (props.onCloseClick) {
-			props.onCloseClick(e, props.id);
-		}
-	}
-
 	return (
 		<div className="root">
-			<div className="close" onClick={handleCloseClick}>
-				<Close />
-			</div>
+			<Actions id={props.id} />
 			<Component className="content" {...componentPropProps}>
 				{props.image && 
 					<div className="image">
