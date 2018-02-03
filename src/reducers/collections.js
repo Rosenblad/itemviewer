@@ -1,4 +1,4 @@
-import * as types from '../actions/index';
+import * as types from '../actions/collectionActions';
 import * as utils from './utils';
 
 function addCollection(state, action) {

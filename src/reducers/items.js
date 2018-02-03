@@ -1,4 +1,5 @@
-import * as types from '../actions/index';
+import * as types from '../actions/itemActions';
+import { CREATE_COLLECTION } from '../actions/collectionActions';
 import * as utils from './utils';
 
 function addItem(state, item) {
@@ -23,7 +24,7 @@ export default function itemsReducer(state = [], action) {
 	switch (action.type) {
 		case types.HIDE_ITEM: return hideItem(state, action);
 		case types.DELETE_ITEM: return deleteItem(state, action);
-		case types.CREATE_COLLECTION: return addItems(state, action.collection.items);
+		case CREATE_COLLECTION: return addItems(state, action.collection.items);
 		default: return state;
 	}
 }

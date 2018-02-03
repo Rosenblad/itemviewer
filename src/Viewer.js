@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Item from './Item';
 import './Viewer.css';
 import wishlist from './parser/dist/wishlist.json';
-import { hideItem } from './actions';
+import { hideItem } from './actions/itemActions';
 import { connect } from 'react-redux';
 
 const items = wishlist.map(item => ({

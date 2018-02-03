@@ -18,10 +18,10 @@ __Done__
 - Remove only this session (hide)
 - Remove permanently (delete) from local storage
 - Add unit tests for reducers
+- Add unit tests for actions
 
 __Not done__
 
-- Add unit tests for actions
 - Show less columns on medium sizes
 - Click to enlarge image
 - Convert to CSS Modules or cssinjs
