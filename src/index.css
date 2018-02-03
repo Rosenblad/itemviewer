@@ -1,0 +1,17 @@
+/* colors */
+
+:root {
+	--primary-color-100: rgb(85,80,141);
+	--primary-color-200: #fff;
+	--primary-color-300: #fff;
+
+	--secondary-color-100: rgb(160,210,219);
+	--secondary-color-200: rgb(190,231,232);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+}

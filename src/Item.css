@@ -1,0 +1,96 @@
+.root {
+	box-sizing: border-box;
+	line-height: 18px;
+	flex-basis: 33.3333%;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-bottom: 0;
+	position: relative;
+	padding: 20px;
+	overflow: hidden;
+}
+
+@media (min-width: 900px) {
+	.root {
+		flex-basis: 25%;
+	}
+}
+
+@media (min-width: 1024px) {
+	.root {
+		flex-basis: 15%;
+	}
+}
+
+a.content {
+	text-decoration: none;
+	color: inherit;
+}
+
+.close {
+	position: absolute;
+	top: 28px;
+	right: 28px;
+	width: 12px;
+	fill: black;
+	opacity: 0.4;
+	z-index: 2000;
+	transition: opacity 225ms ease-in-out;
+	cursor: pointer;
+}
+
+.close:hover {
+	opacity: 0.2;
+}
+
+.image {
+	margin-bottom: 16px;
+	user-select: none;
+}
+
+.image img {
+	height: auto;
+	width: 100%;
+	display: block;
+}
+
+.title {
+	color: #4a4a4a;
+	text-align: center;
+	font-weight: bold;
+}
+
+.subtitle {
+	text-align: center;
+	color: rgb(74, 74, 74);
+	font-size: 14px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin-bottom: 6px;
+}
+
+.other {
+	
+}
+
+.price-and-discount {
+	display: flex;
+	justify-content: center;
+}
+
+.discount {
+	margin-right: 6px;
+	color: #999;
+	text-decoration: line-through;
+}
+
+.price {
+	font-weight: 700;
+	color: #4a4a4a;
+}
+
+.discounted-price {
+	color: #c45131;
+	font-weight: 700;
+}

@@ -1,0 +1,9 @@
+.Viewer {
+	padding: 5px;
+
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 3%;
+	justify-content: space-around;
+}
