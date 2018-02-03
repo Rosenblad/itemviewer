@@ -1,6 +1,7 @@
 const fs = require('fs');
 const cheerio = require('cheerio');
 const url = require('url');
+const uuid = require('uuid');
 
 const processHtml = html => {
 	const $ = cheerio.load(html);
@@ -66,6 +67,8 @@ const inputMapObjs = inputMap.map(input => {
 			inputData[inputData.length - 1]
 				.replace(/("{2}|"$)/g, '"')
 		);
+
+		item.id = uuid.v4();
 
 		return item;;
 	} else {

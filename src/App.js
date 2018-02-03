@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import Viewer from './Viewer';
 import { Provider } from 'react-redux';
-import DevTools from './DevTools';
 
 class App extends React.Component {
   render() {
@@ -11,10 +10,7 @@ class App extends React.Component {
 
     return (
     	<Provider store={store}>
-    		<div>
-					<Viewer />
-					<DevTools />
-				</div>
+				<Viewer />
 			</Provider>
     );
   }
