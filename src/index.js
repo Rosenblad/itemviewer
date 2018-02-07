@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createCollection } from './actions';
+import { createCollection } from './actions/collectionActions';
 import App from './App';
 import configureStore from './store/configureStore';
 import { loadState, saveState } from './libs/storage';
-import wishlist from './parser/dist/wishlist.json';
+import items from './data/zalando.json';
 import './index.css';
 
 // const persistedState = loadState();
@@ -12,7 +12,7 @@ import './index.css';
 
 const store = configureStore();
 
-store.dispatch(createCollection({ items: wishlist }));
+store.dispatch(createCollection({ items }));
 
 store.subscribe(() => {
 	saveState(store.getState());

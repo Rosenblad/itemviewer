@@ -6,7 +6,7 @@ import './Actions.css';
 
 // Redux
 import { connect } from 'react-redux';
-import { hideItem, deleteItem } from '../actions';
+import { hideItem, deleteItem } from '../actions/itemActions';
 
 class Actions extends React.Component {
 

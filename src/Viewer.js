@@ -2,19 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
 import './Viewer.css';
-import wishlist from './parser/dist/wishlist.json';
 import { hideItem } from './actions/itemActions';
 import { connect } from 'react-redux';
-
-const items = wishlist.map(item => ({
-	title: item.title,
-	subtitle: item.subtitle,
-	image: item.image,
-	discount: item.discount,
-	price: item.price,
-	discountedPrice: item.discountedPrice,
-	url: item.src,
-}));
 
 class Viewer extends React.Component {
 
@@ -45,10 +34,6 @@ class Viewer extends React.Component {
 Viewer.propTypes = {
 	items: PropTypes.array,
 	hideItem: PropTypes.func,
-};
-
-Viewer.defaultProps = {
-	items,
 };
 
 export default connect(

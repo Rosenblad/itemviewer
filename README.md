@@ -19,14 +19,17 @@ __Done__
 - Remove permanently (delete) from local storage
 - Add unit tests for reducers
 - Add unit tests for actions
+- Rewrite zalando crawler using puppeteer
+- Move credentials to a gitignored file
+- Write a crawler for zalando
 
 __Not done__
 
-- Show less columns on medium sizes
 - Click to enlarge image
+- Click to view entire item
+- Show less columns on medium sizes
 - Convert to CSS Modules or cssinjs
 - Improve actions style
-- Write a crawler for zalando
 - Write a crawler for blocket
 - Write a crawler for prisjakt
 - Trigger crawls from the app
