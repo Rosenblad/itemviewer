@@ -2,6 +2,15 @@ export function updateObject(oldObject, newValues) {
 	return Object.assign({}, oldObject, newValues);
 }
 
+// export function updateItemInObject(object, updateKey, updateItemCallback) {
+// 	updateObject()
+// 	Object.keys(object).map(itemKey => {
+// 		if (itemKey === itemId) {
+// 			updateObject()
+// 		}
+// 	})
+// }
+
 export function updateItemInArray(array, itemId, updateItemCallback) {
 	const updatedItems = array.map(item => {
 		if (item.id !== itemId) {
@@ -13,6 +22,15 @@ export function updateItemInArray(array, itemId, updateItemCallback) {
 	});
 
 	return updatedItems;
+}
+
+export function removeItemInObejct(object, deleteKey) {
+	return Object.keys(object)
+		.filter(key => key !== deleteKey)
+		.reduce((result, current) => {
+			result[current] = object[current];
+			return result;
+		}, {});
 }
 
 export function removeItemInArray(array, itemId) {

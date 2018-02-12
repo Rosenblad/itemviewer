@@ -1,5 +1,5 @@
 import React from 'react';
-import DeleteIcon from '../assets/waste-bin.svg';
+import DeleteIcon from 'assets/waste-bin.svg';
 
 const Delete = () => (
 	<DeleteIcon />

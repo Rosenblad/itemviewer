@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
-import Viewer from './Viewer';
 import { Provider } from 'react-redux';
+
+import Pages from 'pages';
 
 class App extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class App extends React.Component {
 
     return (
     	<Provider store={store}>
-				<Viewer />
+				<Pages />
 			</Provider>
     );
   }

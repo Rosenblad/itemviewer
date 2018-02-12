@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Actions from './Item/Actions';
+import Actions from './Actions';
 import './Item.css';
 
 const Item = props => {

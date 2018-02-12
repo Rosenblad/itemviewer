@@ -23,17 +23,32 @@ __Done__
 - Move credentials to a gitignored file
 - Write a crawler for zalando
 
+- Collections
+	- Route
+	- List
+	- Delete
+	- Create collection
+
 __Not done__
 
+- Fix hot reloading
+- Write unit tests
+
+- Collections
+	- Create after importing items
+	- Normalize items
+	- Move items between collections
+
+- Add test coverage
 - Click to enlarge image
 - Click to view entire item
+- Lazy load results
 - Show less columns on medium sizes
 - Convert to CSS Modules or cssinjs
 - Improve actions style
 - Write a crawler for blocket
 - Write a crawler for prisjakt
 - Trigger crawls from the app
-- Choose collection to view
 - Add choice to choose list or grid layout
 - Option to choose how many items per row
 - Option to search
