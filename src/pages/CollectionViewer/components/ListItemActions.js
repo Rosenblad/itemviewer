@@ -8,13 +8,11 @@ const Actions = styled.div`
 	background: red;
 `;
 
-const ListItemActions = props => {
-	return (
-		<IconButton onClick={props.onDeleteClick}>
-			<DeleteIcon />
-		</IconButton>
-	)
-};
+const ListItemActions = props => (
+	<IconButton onClick={props.onDeleteClick}>
+		<DeleteIcon />
+	</IconButton>
+);
 
 ListItemActions.propTypes = {
 	onDeleteClick: PropTypes.func,

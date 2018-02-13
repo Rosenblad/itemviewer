@@ -5,7 +5,7 @@ const initialState = [
 	{
 		id: 0,
 		hidden: false,
-	}
+	},
 ];
 
 describe('items reducer', () => {
@@ -14,16 +14,14 @@ describe('items reducer', () => {
 	});
 
 	it('should handle HIDE_ITEM', () => {
-		expect(
-			reducer(initialState, {
-				type: HIDE_ITEM,
-				id: 0,
-			})
-		).toEqual([
+		expect(reducer(initialState, {
+			type: HIDE_ITEM,
+			id: 0,
+		})).toEqual([
 			{
 				id: 0,
 				hidden: true,
-			}
+			},
 		]);
-	})
+	});
 });

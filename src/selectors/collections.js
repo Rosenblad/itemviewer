@@ -1,12 +1,10 @@
-import { createSelector } from 'reselect';
-
 export const collectionsSelector = state => state.collections;
 
 export const itemsByCollectionId = (state, collectionId) => {
 	if (!collectionId) return [];
 
 	const collection = state.collections
-		.find(collection => collection.id === collectionId);
+		.find(c => c.id === collectionId);
 
 	if (!collection) return [];
 

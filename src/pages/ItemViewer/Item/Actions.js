@@ -8,36 +8,34 @@ import DeleteIcon from './Delete';
 import './Actions.css';
 
 class Actions extends React.Component {
+	handleCloseClick = (event) => {
+	  this.props.hideItem(this.props.id);
 
-	handleCloseClick = event => {
-		this.props.hideItem(this.props.id);
-
-		if (this.props.onCloseClick) {
-			this.props.onCloseClick(event);
-		}
+	  if (this.props.onCloseClick) {
+	    this.props.onCloseClick(event);
+	  }
 	};
 
-	handleDeleteClick = event => {
-		this.props.deleteItem(this.props.id);
+	handleDeleteClick = (event) => {
+	  this.props.deleteItem(this.props.id);
 
-		if (this.props.onDeleteClick) {
-			this.props.onDeleteClick(event);
-		}
+	  if (this.props.onDeleteClick) {
+	    this.props.onDeleteClick(event);
+	  }
 	};
 
 	render() {
-		return (
-			<div className="actions">
-				<div className="delete" onClick={this.handleDeleteClick}>
-					<DeleteIcon />
-				</div>
-				<div className="close" onClick={this.handleCloseClick}>
-					<CloseIcon />
-				</div>
+	  return (
+		<div className="actions">
+			<div className="delete" onClick={this.handleDeleteClick}>
+				<DeleteIcon />
 			</div>
-		);
+			<div className="close" onClick={this.handleCloseClick}>
+				<CloseIcon />
+			</div>
+		</div>
+	  );
 	}
-
 }
 
 Actions.propTypes = {
@@ -53,5 +51,5 @@ export default connect(
 	{
 		hideItem,
 		deleteItem,
-	}
+	},
 )(Actions);

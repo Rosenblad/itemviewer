@@ -19,14 +19,14 @@ const itemIds = items.map(item => item.id);
 
 const collectionId = uuid.v4();
 
-store.dispatch(createCollection({ 
-	id: collectionId, 
-	name: 'Zalando', 
-	items: itemIds, 
+store.dispatch(createCollection({
+	id: collectionId,
+	name: 'Zalando',
+	items: itemIds,
 }));
 
 const normalizedItems = {};
-items.map(item => normalizedItems[item.id] = item)
+items.map(item => normalizedItems[item.id] = item);
 
 store.dispatch(addItems(normalizedItems));
 
@@ -34,6 +34,4 @@ store.subscribe(() => {
 	saveState(store.getState());
 });
 
-ReactDOM.render(
-	<App store={store} />, document.getElementById('root')
-);
+ReactDOM.render(<App store={store} />, document.getElementById('root'));

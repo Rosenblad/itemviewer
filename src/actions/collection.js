@@ -5,10 +5,10 @@ export function createCollection(collection) {
 		collection: {
 			id: collection.id,
 			items: collection.items || [],
-			...collection
+			...collection,
 		},
 	};
-};
+}
 
 export const DELETE_COLLECTION = 'DELETE_COLLECTION';
 export function deleteCollection(id) {
@@ -16,7 +16,7 @@ export function deleteCollection(id) {
 		type: DELETE_COLLECTION,
 		id,
 	};
-};
+}
 
 export const ADD_ITEMS_TO_COLLECTION = 'ADD_ITEMS_TO_COLLECTION';
 export function addItemsToCollection(collectionId, items) {
@@ -25,4 +25,4 @@ export function addItemsToCollection(collectionId, items) {
 		collectionId,
 		items,
 	};
-};
+}

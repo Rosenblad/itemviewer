@@ -19,7 +19,7 @@ function hideItem(state, action) {
 		[action.id]: {
 			...state[action.id],
 			hidden: !state[action.id].hidden,
-		}
+		},
 	});
 }
 
@@ -28,7 +28,7 @@ export default function itemsReducer(state = {}, action) {
 		case types.HIDE_ITEM: return hideItem(state, action);
 		case types.DELETE_ITEM: return deleteItem(state, action);
 		case types.ADD_ITEMS: return addItems(state, action.items);
-		// case CREATE_COLLECTION: return addItems(state, action.collection.items);
+			// case CREATE_COLLECTION: return addItems(state, action.collection.items);
 		default: return state;
 	}
 }

@@ -12,7 +12,7 @@ export function updateObject(oldObject, newValues) {
 // }
 
 export function updateItemInArray(array, itemId, updateItemCallback) {
-	const updatedItems = array.map(item => {
+	const updatedItems = array.map((item) => {
 		if (item.id !== itemId) {
 			return item;
 		}
@@ -34,7 +34,7 @@ export function removeItemInObejct(object, deleteKey) {
 }
 
 export function removeItemInArray(array, itemId) {
-	const updatedItems = array.filter(item => {
+	const updatedItems = array.filter((item) => {
 		if (item.id !== itemId) {
 			return true;
 		}

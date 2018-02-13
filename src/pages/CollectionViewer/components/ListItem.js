@@ -29,9 +29,8 @@ const StyledLink = styled(Link)`
 	font-size: 20px;
 `;
 
-const ListItem = props => {
-	
-	const handleDeleteClick = event => {
+const ListItem = (props) => {
+	const handleDeleteClick = (event) => {
 		props.onDeleteClick(event, props.id);
 	};
 

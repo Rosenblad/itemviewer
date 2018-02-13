@@ -7,7 +7,6 @@ import { itemsByCollectionId } from 'selectors/collections';
 import Collection404 from './Collection404';
 
 class ViewCollection extends React.Component {
-
 	render() {
 		const { items } = this.props;
 
@@ -15,23 +14,21 @@ class ViewCollection extends React.Component {
 			return <ItemViewer items={items} />;
 		}
 
-		return <Collection404 />
+		return <Collection404 />;
 	}
-
 }
 
 ViewCollection.propTypes = {
 	// collectionId: PropTypes.string.isRequired,
 	match: PropTypes.object.isRequired,
+	items: PropTypes.array.isRequired,
 };
 
-const Connected = connect(
-	(state, ownProps) => {
-		const { collectionId } = ownProps.match.params;
-		return {
-			items: itemsByCollectionId(state, collectionId),
-		};
-	}
-)(ViewCollection);
+const Connected = connect((state, ownProps) => {
+	const { collectionId } = ownProps.match.params;
+	return {
+		items: itemsByCollectionId(state, collectionId),
+	};
+})(ViewCollection);
 
 export default Connected;

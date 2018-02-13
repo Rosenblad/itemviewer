@@ -9,17 +9,15 @@ describe('collections reducer', () => {
 	});
 
 	it('should handle CREATE_COLLECTION', () => {
-		expect(
-			reducer(initialState, {
-				type: CREATE_COLLECTION,
-				collection: {
-					id: 'hello',
-				}
-			})
-		).toEqual([
+		expect(reducer(initialState, {
+			type: CREATE_COLLECTION,
+			collection: {
+				id: 'hello',
+			},
+		})).toEqual([
 			{
 				id: 'hello',
-			}
+			},
 		]);
 	});
 });

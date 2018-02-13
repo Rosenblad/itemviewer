@@ -10,8 +10,7 @@ function getDebugSessionKey() {
 
 const createStoreWithMiddleware = compose(
 	persistState(getDebugSessionKey()),
-	window.__REDUX_DEVTOOLS_EXTENSION__ && 
-		window.__REDUX_DEVTOOLS_EXTENSION__()
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )(createStore);
 
 export default function configureStore(initialState) {
@@ -22,7 +21,7 @@ export default function configureStore(initialState) {
 			const nextReducer = require('../reducers/index').default;
 
 			store.replaceReducer(nextReducer);
-		})
+		});
 	}
 
 	return store;

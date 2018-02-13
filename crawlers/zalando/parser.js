@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const url = require('url');
 const uuid = require('uuid');
 
-const parseHtml = html => {
+const parseHtml = (html) => {
 	const $ = cheerio.load(html);
 
 	const selectors = {
@@ -14,13 +14,12 @@ const parseHtml = html => {
 		subtitle: '.z_wishlist_card-info__info_name_wrappedCol_td___RCzpf',
 		price: '.z_wishlist_price__price___256K6',
 		discount: '.z_wishlist_price__price_original___1D58k',
-		discountedPrice: '.z_wishlist_price__price_discounted___ut73F'
+		discountedPrice: '.z_wishlist_price__price_discounted___ut73F',
 	};
 
 	const items = [];
 
-	$.root().find(selectors.card).map(function() {
-
+	$.root().find(selectors.card).map(function () {
 		const image = $(this).find(selectors.image).attr('src');
 		const title = $(this).find(selectors.title).text();
 		const subtitle = $(this).find(selectors.subtitle).text();
@@ -56,24 +55,23 @@ const parseHtml = html => {
 			discountedPrice,
 			src,
 		});
-
 	});
 
 	return items;
-}
+};
 
-const input = fs.readFileSync(__dirname + '/../../zalando.html')
+const input = fs.readFileSync(`${__dirname}/../../zalando.html`)
 	.toString();
 
 const items = parseHtml(input);
 
 
-		// const item = processHtml(
-		// 	inputData[inputData.length - 1]
-		// 		.replace(/("{2}|"$)/g, '"')
-		// );
+// const item = processHtml(
+// 	inputData[inputData.length - 1]
+// 		.replace(/("{2}|"$)/g, '"')
+// );
 
-fs.writeFileSync(__dirname + '/dist/wishlist.json', JSON.stringify(items));
+fs.writeFileSync(`${__dirname}/dist/wishlist.json`, JSON.stringify(items));
 
 module.exports = {
 	parseHtml,

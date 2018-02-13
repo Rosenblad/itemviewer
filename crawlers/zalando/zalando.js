@@ -27,7 +27,7 @@ const outputPath = path.resolve(__dirname, '../data/zalando.json');
 	try {
 		const browser = await puppeteer.launch(browserOptions);
 		const page = await browser.newPage();
-		
+
 		await page.goto(targetUrl);
 
 		await page.type(selectors.emailInput, email);
@@ -37,7 +37,7 @@ const outputPath = path.resolve(__dirname, '../data/zalando.json');
 		await page.waitForNavigation();
 		await page.goto(targetUrl);
 
-		const html = await page.evaluate(_ => {
+		const html = await page.evaluate((_) => {
 			const { setTimeout, scrollTo } = window;
 			const { scrollHeight } = document.body;
 
@@ -55,7 +55,7 @@ const outputPath = path.resolve(__dirname, '../data/zalando.json');
 		fs.outputFileSync(outputPath, JSON.stringify(result));
 
 		await browser.close();
-	} catch(err) {
+	} catch (err) {
 		console.error(err);
 	}
 })();

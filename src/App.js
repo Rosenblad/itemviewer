@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 import Pages from 'pages';
 
 class App extends React.Component {
-  render() {
+	render() {
   	const { store } = this.props;
 
-    return (
-    	<Provider store={store}>
+		return (
+			<Provider store={store}>
 				<Pages />
 			</Provider>
-    );
-  }
+		);
+	}
 }
 
 App.propTypes = {

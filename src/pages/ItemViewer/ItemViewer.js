@@ -7,7 +7,6 @@ import { hideItem } from '../../actions/item';
 import './Viewer.css';
 
 class ItemViewer extends React.Component {
-
 	handleCloseClick = (event, id) => {
 		event.preventDefault();
 
@@ -21,12 +20,12 @@ class ItemViewer extends React.Component {
 
 		return (
 			<div className="Viewer">
-				{items.map((item, i) => 
-					<Item 
-						key={item.id} 
-						{...item} 
+				{items.map(item => (
+					<Item
+						key={item.id}
+						{...item}
 						onCloseClick={this.handleCloseClick} />
-				)}
+				))}
 			</div>
 		);
 	}
@@ -43,7 +42,7 @@ ItemViewer.defaultProps = {
 
 const Connected = connect(
 	null,
-	{ hideItem }
+	{ hideItem },
 )(ItemViewer);
 
-export default Connected; 
+export default Connected;

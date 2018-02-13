@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Actions from './Actions';
 import './Item.css';
 
-const Item = props => {
-
+const Item = (props) => {
 	const {
 		component: componentProp,
 		url,
@@ -30,10 +29,10 @@ const Item = props => {
 		<div className="root">
 			<Actions id={props.id} />
 			<Component className="content" {...componentPropProps}>
-				{props.image && 
-					<div className="image">
-						<img src={props.image} />
-					</div>}
+				{props.image
+        && <div className="image">
+	<img src={props.image} />
+           </div>}
 				<div className="title">
 					{props.title}
 				</div>
@@ -57,7 +56,7 @@ const Item = props => {
 			</Component>
 		</div>
 	);
-}
+};
 
 Item.propTypes = {
 	id: PropTypes.string.isRequired,

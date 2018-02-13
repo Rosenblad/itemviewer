@@ -10,7 +10,7 @@ function deleteCollection(state, action) {
 }
 
 function addItemsToCollection(state, action) {
-	return state.map(collection => {
+	return state.map((collection) => {
 		if (collection.id === action.collectionId) {
 			return utils.updateObject(collection, { items: action.items });
 		}
