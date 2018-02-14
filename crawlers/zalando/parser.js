@@ -19,6 +19,7 @@ const parseHtml = (html) => {
 
 	const items = [];
 
+	// eslint-disable-next-line array-callback-return, func-names
 	$.root().find(selectors.card).map(function () {
 		const image = $(this).find(selectors.image).attr('src');
 		const title = $(this).find(selectors.title).text();

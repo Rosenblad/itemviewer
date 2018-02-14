@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
+
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
-const credentials = require('./credentials');
-const cheerio = require('cheerio');
-const { parseHtml } = require('../parsers/zalando');
+const credentials = require('../credentials');
+const { parseHtml } = require('./parser');
 const path = require('path');
 
 const { username: email, password } = credentials.zalando;
@@ -37,13 +38,13 @@ const outputPath = path.resolve(__dirname, '../data/zalando.json');
 		await page.waitForNavigation();
 		await page.goto(targetUrl);
 
-		const html = await page.evaluate((_) => {
+		const html = await page.evaluate(() => {
 			const { setTimeout, scrollTo } = window;
 			const { scrollHeight } = document.body;
 
 			scrollTo(0, scrollHeight);
 
-			return new Promise((resolve, reject) => {
+			return new Promise((resolve) => {
 				setTimeout(() => {
 					const items = document.querySelector('#z-aladdin-cardList');
 					return resolve(items.outerHTML);

@@ -1,15 +1,15 @@
-const autoprefixer = require('autoprefixer');
+// const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const eslintFormatter = require('react-dev-utils/eslintFormatter');
+// const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
+// const postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -57,44 +57,15 @@ module.exports = {
 		devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
 	},
 	resolve: {
-		modules: ['node_modules'],
+		modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
 		extensions: ['.js', '.json'],
-		// plugins: [
-		// 	new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-		// ],
+		root: path.resolve(process.cwd(), 'src'),
 	},
 	module: {
 		strictExportPresence: true,
 		rules: [
-			// TODO: Disable require.ensure as it's not a standard language feature.
-			// We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
-			// { parser: { requireEnsure: false } },
-
-			// First, run the linter.
-			// It's important to do this before Babel processes the JS.
 			{
-				test: /\.(js|jsx|mjs)$/,
-				enforce: 'pre',
-				use: [
-					{
-						options: {
-							formatter: eslintFormatter,
-							eslintPath: require.resolve('eslint'),
-
-						},
-						loader: require.resolve('eslint-loader'),
-					},
-				],
-				include: paths.appSrc,
-			},
-			{
-				// "oneOf" will traverse all following loaders until one will
-				// match the requirements. When no loader matches it will fall
-				// back to the "file" loader at the end of the loader list.
 				oneOf: [
-					// "url" loader works like "file" loader except that it embeds assets
-					// smaller than specified limit in bytes as data URLs to avoid requests.
-					// A missing `test` is equivalent to a match.
 					{
 						test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
 						loader: require.resolve('url-loader'),
@@ -103,17 +74,11 @@ module.exports = {
 							name: 'static/media/[name].[hash:8].[ext]',
 						},
 					},
-					// Process JS with Babel.
 					{
 						test: /\.(js|jsx|mjs)$/,
 						include: paths.appSrc,
 						loader: require.resolve('babel-loader'),
 						options: {
-
-							// This is a feature of `babel-loader` for webpack (not Babel itself).
-							// It enables caching results in ./node_modules/.cache/babel-loader/
-							// directory for faster rebuilds.
-							cacheDirectory: true,
 							plugins: ['react-hot-loader/babel'],
 						},
 					},
@@ -144,26 +109,6 @@ module.exports = {
 								loader: require.resolve('css-loader'),
 								options: {
 									importLoaders: 1,
-								},
-							},
-							{
-								loader: require.resolve('postcss-loader'),
-								options: {
-									// Necessary for external CSS imports to work
-									// https://github.com/facebookincubator/create-react-app/issues/2677
-									ident: 'postcss',
-									plugins: () => [
-										postcssFlexbugsFixes,
-										autoprefixer({
-											browsers: [
-												'>1%',
-												'last 4 versions',
-												'Firefox ESR',
-												'not ie < 9', // React doesn't support IE8 anyway
-											],
-											flexbox: 'no-2009',
-										}),
-									],
 								},
 							},
 						],

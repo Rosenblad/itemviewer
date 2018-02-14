@@ -29,10 +29,10 @@ const Item = (props) => {
 		<div className="root">
 			<Actions id={props.id} />
 			<Component className="content" {...componentPropProps}>
-				{props.image
-        && <div className="image">
-	<img src={props.image} />
-           </div>}
+				{ props.image &&
+					<div className="image">
+						<img src={props.image} alt="" />
+					</div> }
 				<div className="title">
 					{props.title}
 				</div>
@@ -61,20 +61,20 @@ const Item = (props) => {
 Item.propTypes = {
 	id: PropTypes.string.isRequired,
 	component: PropTypes.string,
-	hidden: PropTypes.bool,
+	hidden: PropTypes.bool.isRequired,
 	image: PropTypes.string,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
-	other: PropTypes.array,
-	layout: PropTypes.oneOf(['grid', 'list']),
-	url: PropTypes.string,
+	other: PropTypes.array.isRequired,
+	layout: PropTypes.oneOf(['grid', 'list']).isRequired,
+	url: PropTypes.string.isRequired,
 	price: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
 	]),
 	discount: PropTypes.string,
-	discountedPrice: PropTypes.string,
-	onCloseClick: PropTypes.func,
+	discountedPrice: PropTypes.string.isRequired,
+	onCloseClick: PropTypes.func.isRequired,
 };
 
 Item.defaultProps = {

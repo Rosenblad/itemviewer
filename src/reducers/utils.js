@@ -28,6 +28,7 @@ export function removeItemInObejct(object, deleteKey) {
 	return Object.keys(object)
 		.filter(key => key !== deleteKey)
 		.reduce((result, current) => {
+			// eslint-disable-next-line
 			result[current] = object[current];
 			return result;
 		}, {});

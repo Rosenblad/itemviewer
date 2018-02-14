@@ -1,5 +1,5 @@
 import reducer from './collections';
-import { CREATE_COLLECTION } from '../actions/collectionActions';
+import { CREATE_COLLECTION } from '../actions/collection';
 
 const initialState = [];
 

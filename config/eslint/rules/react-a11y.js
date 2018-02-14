@@ -104,20 +104,20 @@ module.exports = {
 
 		// require onClick be accompanied by onKeyUp/onKeyDown/onKeyPress
 		// https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/click-events-have-key-events.md
-		'jsx-a11y/click-events-have-key-events': 'error',
+		// 'jsx-a11y/click-events-have-key-events': 'error',
 
 		// Enforce that DOM elements without semantic behavior not have interaction handlers
 		// https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-static-element-interactions.md
-		'jsx-a11y/no-static-element-interactions': ['error', {
-			handlers: [
-				'onClick',
-				'onMouseDown',
-				'onMouseUp',
-				'onKeyPress',
-				'onKeyDown',
-				'onKeyUp',
-			],
-		}],
+		// 'jsx-a11y/no-static-element-interactions': ['error', {
+		// 	handlers: [
+		// 		'onClick',
+		// 		'onMouseDown',
+		// 		'onMouseUp',
+		// 		'onKeyPress',
+		// 		'onKeyDown',
+		// 		'onKeyUp',
+		// 	],
+		// }],
 
 		// A non-interactive element does not support event handlers (mouse and key handlers)
 		// https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-noninteractive-element-interactions.md

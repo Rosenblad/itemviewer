@@ -1,4 +1,4 @@
-import * as itemActions from './itemActions';
+import * as itemActions from './item';
 
 describe('item actions', () => {
 	it('should create an action hide an item', () => {

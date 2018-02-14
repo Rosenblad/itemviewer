@@ -9,41 +9,41 @@ import './Actions.css';
 
 class Actions extends React.Component {
 	handleCloseClick = (event) => {
-	  this.props.hideItem(this.props.id);
+		this.props.hideItem(this.props.id);
 
-	  if (this.props.onCloseClick) {
-	    this.props.onCloseClick(event);
-	  }
+		if (this.props.onCloseClick) {
+			this.props.onCloseClick(event);
+		}
 	};
 
 	handleDeleteClick = (event) => {
-	  this.props.deleteItem(this.props.id);
+		this.props.deleteItem(this.props.id);
 
-	  if (this.props.onDeleteClick) {
-	    this.props.onDeleteClick(event);
-	  }
+		if (this.props.onDeleteClick) {
+			this.props.onDeleteClick(event);
+		}
 	};
 
 	render() {
-	  return (
-		<div className="actions">
-			<div className="delete" onClick={this.handleDeleteClick}>
-				<DeleteIcon />
+		return (
+			<div className="actions">
+				<div className="delete" onClick={this.handleDeleteClick}>
+					<DeleteIcon />
+				</div>
+				<div className="close" onClick={this.handleCloseClick}>
+					<CloseIcon />
+				</div>
 			</div>
-			<div className="close" onClick={this.handleCloseClick}>
-				<CloseIcon />
-			</div>
-		</div>
-	  );
+		);
 	}
 }
 
 Actions.propTypes = {
-	id: PropTypes.string,
-	onCloseClick: PropTypes.func,
-	onDeleteClick: PropTypes.func,
-	hideItem: PropTypes.func,
-	deleteItem: PropTypes.func,
+	id: PropTypes.string.isRequired,
+	onCloseClick: PropTypes.func.isRequired,
+	onDeleteClick: PropTypes.func.isRequired,
+	hideItem: PropTypes.func.isRequired,
+	deleteItem: PropTypes.func.isRequired,
 };
 
 export default connect(

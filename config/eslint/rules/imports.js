@@ -11,8 +11,11 @@ module.exports = {
 	],
 	settings: {
 		'import/resolver': {
-			webpack: {
-				// config: 'config/webpack.config.dev.js',
+			node: {
+				moduleDirectory: [
+					'node_modules',
+					'src',
+				],
 			},
 		},
 		'import/extensions': [

@@ -1,10 +1,10 @@
 import * as types from 'actions/item';
-import { CREATE_COLLECTION } from 'actions/collection';
+// import { CREATE_COLLECTION } from 'actions/collection';
 import * as utils from './utils';
 
-function addItem(state, item) {
-	return utils.updateObject(state, item);
-}
+// function addItem(state, item) {
+// 	return utils.updateObject(state, item);
+// }
 
 function addItems(state, items) {
 	return utils.updateObject(state, items);

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import IconButton from 'components/IconButton';
 import DeleteIcon from 'components/DeleteIcon';
 
-const Actions = styled.div`
-	background: red;
-`;
+// const Actions = styled.div`
+// 	background: red;
+// `;
 
 const ListItemActions = props => (
 	<IconButton onClick={props.onDeleteClick}>
@@ -15,7 +15,7 @@ const ListItemActions = props => (
 );
 
 ListItemActions.propTypes = {
-	onDeleteClick: PropTypes.func,
+	onDeleteClick: PropTypes.func.isRequired,
 };
 
 export default ListItemActions;

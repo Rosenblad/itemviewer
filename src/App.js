@@ -7,7 +7,7 @@ import Pages from 'pages';
 
 class App extends React.Component {
 	render() {
-  	const { store } = this.props;
+		const { store } = this.props;
 
 		return (
 			<Provider store={store}>
@@ -18,7 +18,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-	store: PropTypes.object,
+	store: PropTypes.object.isRequired,
 };
 
 export default hot(module)(App);

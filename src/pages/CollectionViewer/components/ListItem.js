@@ -45,7 +45,9 @@ const ListItem = (props) => {
 };
 
 ListItem.propTypes = {
-	onDeleteClick: PropTypes.func,
+	id: PropTypes.string.isRequired,
+	onDeleteClick: PropTypes.func.isRequired,
+	name: PropTypes.string.isRequired,
 };
 
 export default ListItem;

@@ -20,7 +20,7 @@ class ViewCollection extends React.Component {
 
 ViewCollection.propTypes = {
 	// collectionId: PropTypes.string.isRequired,
-	match: PropTypes.object.isRequired,
+	// match: PropTypes.object.isRequired,
 	items: PropTypes.array.isRequired,
 };
 

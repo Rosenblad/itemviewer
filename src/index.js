@@ -6,7 +6,8 @@ import { createCollection } from 'actions/collection';
 import { addItems } from 'actions/item';
 import App from 'App';
 import configureStore from 'store/configureStore';
-import { loadState, saveState } from 'libs/storage';
+// import { loadState, saveState } from 'libs/storage';
+import { saveState } from 'libs/storage';
 import items from 'data/zalando.json';
 import 'index.css';
 
@@ -26,6 +27,7 @@ store.dispatch(createCollection({
 }));
 
 const normalizedItems = {};
+// eslint-disable-next-line no-return-assign
 items.map(item => normalizedItems[item.id] = item);
 
 store.dispatch(addItems(normalizedItems));

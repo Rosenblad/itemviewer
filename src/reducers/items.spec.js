@@ -1,5 +1,5 @@
 import reducer from './items';
-import { HIDE_ITEM, DELETE_ITEM } from '../actions/itemActions';
+import { HIDE_ITEM } from '../actions/item';
 
 const initialState = [
 	{
