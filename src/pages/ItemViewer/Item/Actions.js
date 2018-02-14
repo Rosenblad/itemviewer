@@ -40,8 +40,8 @@ class Actions extends React.Component {
 
 Actions.propTypes = {
 	id: PropTypes.string.isRequired,
-	onCloseClick: PropTypes.func.isRequired,
-	onDeleteClick: PropTypes.func.isRequired,
+	onCloseClick: PropTypes.func,
+	onDeleteClick: PropTypes.func,
 	hideItem: PropTypes.func.isRequired,
 	deleteItem: PropTypes.func.isRequired,
 };

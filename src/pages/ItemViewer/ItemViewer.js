@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Item from './Item';
 import { hideItem } from '../../actions/item';
 import './Viewer.css';
+import Search from './Search';
+import ListItems from './ListItems';
 
 class ItemViewer extends React.Component {
 	handleCloseClick = (event, id) => {
@@ -20,12 +22,8 @@ class ItemViewer extends React.Component {
 
 		return (
 			<div className="Viewer">
-				{items.map(item => (
-					<Item
-						key={item.id}
-						{...item}
-						onCloseClick={this.handleCloseClick} />
-				))}
+				<Search />
+				<ListItems items={items} onCloseClick={this.handleCloseClick} />
 			</div>
 		);
 	}

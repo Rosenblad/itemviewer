@@ -2,6 +2,63 @@
 
 > Sorted by priority.
 
+__Not done__
+
++ App
+	- Plugin API for internal plugins (add menu items, actions etc)
+	- Replace create-react-app with react-static
+
++ ItemViewer
+	+ Search
+		- Simple search (https://github.com/krisk/Fuse)
+		- Autosuggest (http://react-autosuggest.js.org/)
+		- Advanced search
+	- Click to enlarge image
+	- Lazy load results
+	- Add choice to choose list or grid layout
+	- Option to choose how many items per row
+	- Option to compare
+	- Sort by price
+	- Sort by name
+	- Drag and drop to sort
+	- Navigate selected item with keyboard
+	- Selected item keyboard actions
+	- Show less columns on medium sizes
+	- Ability to undo actions
+	- Only the title should open product detail page (alt extend icon)
+
++ Testing
+	- Write integration tests
+	- Write unit tests
+	- Add test coverage
+
++ Collections
+	- Create after importing items
+	- Normalize items
+	- Move items between collections
+
+- Click to view entire item
+- Convert to CSS Modules or cssinjs
+- Improve actions style
+
+- Write a crawler for blocket
+- Write a crawler for prisjakt
+- Write a crawler for goodreads
+- Write a crawler for recepten
+- Write a crawler for youtube
+
+- Trigger crawls from the app
+- Quick preview more info
+- Save list for later
+- Preload url and open in app
+
++ Write a crawling tool
+
+__Low Prio / Maybe__
+
+- Add list from clipboard
+- Paste in HTML and pass selectors
+
 __Done__
 
 - Open in new tab when clicking item
@@ -28,38 +85,3 @@ __Done__
 	- List
 	- Delete
 	- Create collection
-
-__Not done__
-
-- Fix hot reloading
-- Write unit tests
-
-- Collections
-	- Create after importing items
-	- Normalize items
-	- Move items between collections
-
-- Add test coverage
-- Click to enlarge image
-- Click to view entire item
-- Lazy load results
-- Show less columns on medium sizes
-- Convert to CSS Modules or cssinjs
-- Improve actions style
-- Write a crawler for blocket
-- Write a crawler for prisjakt
-- Trigger crawls from the app
-- Add choice to choose list or grid layout
-- Option to choose how many items per row
-- Option to search
-- Option to compare
-- Sort by price
-- Sort by name
-- Drag and drop to sort
-- Quick preview more info
-- Save list for later
-- Add list from clipboard
-- Paste in HTML and pass selectors
-- Ability to undo actions
-- Only the title should open product detail page (alt extend icon)
-- Preload url and open in app

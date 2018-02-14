@@ -61,13 +61,13 @@ const Item = (props) => {
 Item.propTypes = {
 	id: PropTypes.string.isRequired,
 	component: PropTypes.string,
-	hidden: PropTypes.bool.isRequired,
+	hidden: PropTypes.bool,
 	image: PropTypes.string,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
-	other: PropTypes.array.isRequired,
-	layout: PropTypes.oneOf(['grid', 'list']).isRequired,
-	url: PropTypes.string.isRequired,
+	other: PropTypes.array,
+	layout: PropTypes.oneOf(['grid', 'list']),
+	url: PropTypes.string,
 	price: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -83,7 +83,12 @@ Item.defaultProps = {
 	image: 'https://mosaic01.ztat.net/vgs/media/pdp-gallery/IV/45/1L/02/PQ/11/IV451L02P-Q11@10.1.jpg',
 	discount: '179,00 kr',
 	price: '134,00 kr',
+	
 	component: 'a',
+	hidden: false,
+	other: [],
+	layout: 'grid',
+	url: null,
 };
 
 export default Item;

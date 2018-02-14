@@ -59,7 +59,6 @@ module.exports = {
 	resolve: {
 		modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
 		extensions: ['.js', '.json'],
-		root: path.resolve(process.cwd(), 'src'),
 	},
 	module: {
 		strictExportPresence: true,
