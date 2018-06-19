@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LazyLoad from 'react-lazyload';
 import Actions from './Actions';
 import './Item.css';
 
@@ -8,6 +9,8 @@ const Item = (props) => {
 		component: componentProp,
 		url,
 		hidden,
+		onDelete,
+		onHide,
 	} = props;
 
 	if (hidden) return null;
@@ -27,11 +30,16 @@ const Item = (props) => {
 
 	return (
 		<div className="root">
-			<Actions id={props.id} />
+			<Actions id={props.id} onDelete={onDelete} onHide={onHide} />
 			<Component className="content" {...componentPropProps}>
 				{ props.image &&
 					<div className="image">
-						<img src={props.image} alt="" />
+						<LazyLoad 
+							height={180} 
+							once
+							placeholder={<div style={{ background: '#f4f4f4', height: 180 }} />}>
+							<img src={props.image} alt="" />
+						</LazyLoad>
 					</div> }
 				<div className="title">
 					{props.title}
@@ -42,17 +50,18 @@ const Item = (props) => {
 				<div className="other">
 					{props.other}
 				</div>
-				<div className="price-and-discount">
-					<div className="discount">
-						{props.discount}
-					</div>
-					<div className="price">
-						{props.price}
-					</div>
-					<div className="discounted-price">
-						{props.discountedPrice}
-					</div>
-				</div>
+				{(props.price || props.discount) &&
+					<div className="price-and-discount">
+						<div className="discount">
+							{props.discount}
+						</div>
+						<div className="price">
+							{props.price}
+						</div>
+						<div className="discounted-price">
+							{props.discountedPrice}
+						</div>
+					</div>}
 			</Component>
 		</div>
 	);
@@ -73,17 +82,12 @@ Item.propTypes = {
 		PropTypes.number,
 	]),
 	discount: PropTypes.string,
-	discountedPrice: PropTypes.string.isRequired,
-	onCloseClick: PropTypes.func.isRequired,
+	discountedPrice: PropTypes.string,
+	onHide: PropTypes.func,
+	onDelete: PropTypes.func,
 };
 
 Item.defaultProps = {
-	title: 'Ivyrevel',
-	subtitle: 'PLAGE  - Halsband - black',
-	image: 'https://mosaic01.ztat.net/vgs/media/pdp-gallery/IV/45/1L/02/PQ/11/IV451L02P-Q11@10.1.jpg',
-	discount: '179,00 kr',
-	price: '134,00 kr',
-	
 	component: 'a',
 	hidden: false,
 	other: [],
