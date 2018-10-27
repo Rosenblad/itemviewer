@@ -21,9 +21,9 @@ module.exports = {
 
 		// require parens in arrow function arguments
 		// https://eslint.org/docs/rules/arrow-parens
-		'arrow-parens': ['error', 'as-needed', {
-			requireForBlockBody: true,
-		}],
+		// 'arrow-parens': ['error', 'as-needed', {
+		// 	requireForBlockBody: true,
+		// }],
 
 		// require space before/after arrow function's arrow
 		// https://eslint.org/docs/rules/arrow-spacing

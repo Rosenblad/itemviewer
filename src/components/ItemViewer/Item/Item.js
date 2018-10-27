@@ -35,7 +35,8 @@ const Item = (props) => {
 				{ props.image &&
 					<div className="image">
 						<LazyLoad 
-							height={180} 
+							height={180}
+							offset={200}
 							once
 							placeholder={<div style={{ background: '#f4f4f4', height: 180 }} />}>
 							<img src={props.image} alt="" />

@@ -19,7 +19,7 @@ module.exports = {
 		// 'no-restricted-globals': ['error', 'isFinite', 'isNaN'].concat(restrictedGlobals),
 
 		// disallow declaration of variables already declared in the outer scope
-		'no-shadow': 'error',
+		// 'no-shadow': 'error',
 
 		// disallow shadowing of names such as arguments
 		'no-shadow-restricted-names': 'error',

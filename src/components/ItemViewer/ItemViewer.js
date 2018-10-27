@@ -1,30 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { forceCheck } from 'react-lazyload';
 import ListItems from './ListItems';
 import './Viewer.css';
 
-class ItemViewer extends React.Component {
-	render() {
-		const {
-			items,
-			onDelete,
-			onHide,
-			toolbar,
-			hidden,
-		} = this.props;
-
-		return (
-			<div className="Viewer">
-				{toolbar}
-				<ListItems
-					items={items}
-					onDelete={onDelete}
-					onHide={onHide}
-					hidden={hidden} />
-			</div>
-		);
-	}
+function ItemViewer({
+	items,
+	onDelete,
+	onHide,
+	toolbar,
+	hidden,	
+}) {
+	return (
+		<div className="Viewer">
+			{toolbar}
+			<ListItems
+				items={items}
+				onDelete={onDelete}
+				onHide={onHide}
+				hidden={hidden} />
+		</div>
+	);
 }
 
 ItemViewer.propTypes = {

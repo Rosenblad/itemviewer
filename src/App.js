@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+} from 'react-router-dom';
 
-import Pages from 'pages';
+import CollectionViewerContainer from './containers/CollectionViewerContainer';
+import CollectionView from './views/CollectionView';
 
 class App extends React.Component {
 	render() {
@@ -11,7 +17,22 @@ class App extends React.Component {
 
 		return (
 			<Provider store={store}>
-				<Pages />
+				<Router>
+					<div>
+						<ul>
+							<li><Link to="/">Collections</Link></li>
+						</ul>
+
+						<Route
+							exact
+							path="/"
+							component={CollectionViewerContainer} />
+						<Route
+							path="/collection/:collectionId"
+							component={CollectionView} />
+
+					</div>
+				</Router>
 			</Provider>
 		);
 	}

@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import uuid from 'uuid';
 
-import { createCollection } from 'actions/collection';
-import { addItems } from 'actions/item';
+// import { createCollection } from 'state/actions/collection';
+// import { addItems } from 'state/actions/item';
 import App from 'App';
-import configureStore from 'store/configureStore';
+import configureStore from 'state/store/configureStore';
 // import { loadState, saveState } from 'libs/storage';
-import { saveState } from 'libs/storage';
-import items from 'data/zalando.json';
+import { saveState } from 'state/libs/localStorage';
+import { loadDataSuccess } from 'state/actions';
+import items from 'state/data/zalando.json';
 import 'index.css';
 
 // const persistedState = loadState();
@@ -16,22 +17,32 @@ import 'index.css';
 
 const store = configureStore();
 
-const itemIds = items.map(item => item.id);
+const collectionId = '96388d7e-b578-490a-a7e3-4228a7f08446';
 
-const collectionId = uuid.v4();
+const collections = [
+	{
+		id: collectionId,
+		name: 'Zalando',
+	},
+];
 
-store.dispatch(createCollection({
-	id: collectionId,
-	name: 'Zalando',
-	items: itemIds,
-}));
+const collectionItems = [
+	{
+		id: uuid.v4(),
+		collectionId,
+		itemIds: items.map(item => item.id),
+	},
+];
 
-const normalizedItems = {};
-// eslint-disable-next-line no-return-assign
-items.map(item => normalizedItems[item.id] = item);
+const data = {
+	collections,
+	items,
+	collectionItems,
+};
 
-store.dispatch(addItems(normalizedItems));
+store.dispatch(loadDataSuccess(data));
 
+// should use lodash throttle or similar
 store.subscribe(() => {
 	saveState(store.getState());
 });
