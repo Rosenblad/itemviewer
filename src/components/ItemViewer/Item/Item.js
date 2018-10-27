@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
+import classnames from 'classnames';
 import Actions from './Actions';
 import './Item.css';
 
@@ -11,6 +12,8 @@ const Item = (props) => {
 		hidden,
 		onDelete,
 		onHide,
+		layout,
+		...other
 	} = props;
 
 	if (hidden) return null;
@@ -36,8 +39,8 @@ const Item = (props) => {
 	];
 
 	return (
-		<div className="root">
-			<Component className="content" {...componentPropProps}>
+		<div className={classnames('Item', 'root', { [`Item-layout-${layout}`]: layout })}>
+			<Component className="Item-actionArea" {...componentPropProps}>
 				{ props.image &&
 					<div className="image">
 						<LazyLoad 
@@ -48,27 +51,29 @@ const Item = (props) => {
 							<img src={props.image} alt="" />
 						</LazyLoad>
 					</div> }
-				<div className="title">
-					{props.title}
+				<div className="Item-content content">
+					<div className="title">
+						{props.title}
+					</div>
+					<div className="subtitle">
+						{props.subtitle}
+					</div>
+					<div className="other">
+						{props.other}
+					</div>
+					{(props.price || props.discount) &&
+						<div className="price-and-discount">
+							<div className="discount">
+								{props.discount}
+							</div>
+							<div className="price">
+								{props.price}
+							</div>
+							<div className="discounted-price">
+								{props.discountedPrice}
+							</div>
+						</div>}
 				</div>
-				<div className="subtitle">
-					{props.subtitle}
-				</div>
-				<div className="other">
-					{props.other}
-				</div>
-				{(props.price || props.discount) &&
-					<div className="price-and-discount">
-						<div className="discount">
-							{props.discount}
-						</div>
-						<div className="price">
-							{props.price}
-						</div>
-						<div className="discounted-price">
-							{props.discountedPrice}
-						</div>
-					</div>}
 			</Component>
 			<Actions 
 				id={props.id} 
@@ -79,7 +84,7 @@ const Item = (props) => {
 };
 
 Item.propTypes = {
-	id: PropTypes.string.isRequired,
+	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	component: PropTypes.string,
 	hidden: PropTypes.bool,
 	image: PropTypes.string,
