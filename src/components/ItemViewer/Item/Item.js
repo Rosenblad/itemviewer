@@ -28,9 +28,15 @@ const Item = (props) => {
 		Component = 'div';
 	}
 
+	const actions = [
+		{
+			label: 'Delete',
+			onClick: () => onHide(props.id),
+		}
+	];
+
 	return (
 		<div className="root">
-			<Actions id={props.id} onDelete={onDelete} onHide={onHide} />
 			<Component className="content" {...componentPropProps}>
 				{ props.image &&
 					<div className="image">
@@ -64,6 +70,10 @@ const Item = (props) => {
 						</div>
 					</div>}
 			</Component>
+			<Actions 
+				id={props.id} 
+				onDelete={onDelete} 
+				actions={actions} />
 		</div>
 	);
 };
