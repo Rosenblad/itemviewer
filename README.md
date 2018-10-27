@@ -4,37 +4,17 @@
 
 __Not done__
 
+- Drag and drop
 - Add Save button
-- Download images on crawl
-
 + App
 	- Plugin API for internal plugins (add menu items, actions etc)
-	- Replace create-react-app with react-static
 	- Move application state to respective application
 	- Normalize data
-
-
 - Click to view entire item
 - Convert to CSS Modules or cssinjs
-- Improve actions style
-
-- Write a crawler for blocket
-- Write a crawler for prisjakt
-- Write a crawler for goodreads
-- Write a crawler for recepten
-- Write a crawler for youtube
-
-- Trigger crawls from the app
 - Quick preview more info
 - Save list for later
 - Preload url and open in app
-
-+ Write a crawling tool
-
-__Low Prio / Maybe__
-
-- Add list from clipboard
-- Paste in HTML and pass selectors
 
 __Done__
 

@@ -1,13 +1,13 @@
-# Itemviewer specification
+# Itemviewer Specification
 
-Itemviewer displays items from collections of data visually.
+Itemviewer allows you to browse and sort through items from collections of data visually.
 
 ## The item
 
 __Functionality__
 
 - Visual feedback when mousing over parts that can be interacted with.
-- Collapses gracefully when provided data is inconsistent.
+- Collapses gracefully when there is missing data.
 - Shows actions as buttons at the bottom of the card.
 - When clicking the thumbnail open the image for viewing in full size.
 
