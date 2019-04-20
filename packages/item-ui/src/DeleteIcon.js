@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DeleteIconSvg from '../../assets/waste-bin.svg';
+import DeleteIconSvg from './waste-bin.svg';
 
 const IconWrapper = styled.div`
 	fill: black;
@@ -12,7 +12,7 @@ const IconWrapper = styled.div`
 
 const DeleteIcon = () => (
 	<IconWrapper>
-		<DeleteIconSvg />
+		<img src={DeleteIconSvg} />
 	</IconWrapper>
 );
 

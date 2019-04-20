@@ -18,6 +18,7 @@ module.exports = async ({ config, mode }) => {
 
 	config.resolve.alias = Object.assign({}, config.resolve.alias, {
 		'itemviewer': resolve(packagesDir, 'itemviewer/src'),
+		'item-ui': resolve(packagesDir, 'item-ui/src'),
 	});
 
 	return config;

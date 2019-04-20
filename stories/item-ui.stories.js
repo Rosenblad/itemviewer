@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { storiesOf } from '@storybook/react';
 import IconButton from 'item-ui/IconButton';
 import DeleteIcon from 'item-ui/DeleteIcon';
 
@@ -9,8 +9,6 @@ const ListItemActions = props => (
 	</IconButton>
 );
 
-ListItemActions.propTypes = {
-	onDeleteClick: PropTypes.func.isRequired,
-};
+const stories = storiesOf('Item UI', module);
 
-export default ListItemActions;
+stories.add('IconButton', () => <ListItemActions />);
