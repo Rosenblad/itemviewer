@@ -4,6 +4,8 @@
 
 __Not done__
 
+- Refactor app to tsx
+- Refactor app to use react hooks
 - Drag and drop
 - Add Save button
 + App
