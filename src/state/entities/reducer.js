@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { HIDE_ITEM } from 'containers/ItemViewerContainer/actions';
+import { HIDE_ITEM } from '../../containers/ItemViewerContainer/actions';
 import { LOAD_DATA_SUCCESS } from '../actions';
 import { removeItemInObject, normalize } from '../reducerUtils';
 

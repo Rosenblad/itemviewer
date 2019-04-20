@@ -34,12 +34,12 @@ function updateObjectInArray(array, action) {
             // This isn't the item we care about - keep it as-is
             return item;
         }
-        
+
         // Otherwise, this is the one we want - return an updated value
         return {
             ...item,
             ...action.item
-        };    
+        };
     });
 }
 
@@ -76,35 +76,4 @@ export function removeItemInArray(array, itemId) {
 	});
 
 	return updatedItems;
-}
-
-function insertItem(array, action) {
-    return [
-        ...array.slice(0, action.index),
-        action.item,
-        ...array.slice(action.index)
-    ]
-}
-
-function removeItem(array, action) {
-    return [
-        ...array.slice(0, action.index),
-        ...array.slice(action.index + 1)
-    ];
-}
-
-function insertItem(array, action) {
-    let newArray = array.slice();
-    newArray.splice(action.index, 0, action.item);
-    return newArray;
-}
-
-function removeItem(array, action) {
-    let newArray = array.slice();
-    newArray.splice(action.index, 1);
-    return newArray;
-}
-
-function removeItem(array, action) {
-    return array.filter( (item, index) => index !== action.index);
 }

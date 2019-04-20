@@ -1,22 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import LazyLoad from 'react-lazyload';
 import classnames from 'classnames';
+import * as React from 'react';
+import LazyLoad from 'react-lazyload';
+import { IItemProps } from '../../types/index';
 import Actions from './Actions';
 import './Item.css';
 
-const Item = (props) => {
+function Item(props: IItemProps) {
 	const {
 		component: componentProp,
-		url,
+		discount,
+		discountedPrice,
 		hidden,
-		onDelete,
-		onHide,
+		id,
+		image,
 		layout,
-		...other
+		onHide,
+		other,
+		price,
+		subtitle,
+		title,
+		url,
 	} = props;
 
-	if (hidden) return null;
+	if (hidden) { return null; }
 
 	let Component = componentProp;
 
@@ -34,80 +40,57 @@ const Item = (props) => {
 	const actions = [
 		{
 			label: 'Delete',
-			onClick: () => onHide(props.id),
-		}
+			onClick: () => onHide ? onHide(id) : null,
+		},
 	];
 
 	return (
 		<div className={classnames('Item', 'root', { [`Item-layout-${layout}`]: layout })}>
 			<Component className="Item-actionArea" {...componentPropProps}>
-				{ props.image &&
+				{ image &&
 					<div className="image">
-						<LazyLoad 
+						<LazyLoad
 							height={180}
 							offset={200}
 							once
 							placeholder={<div style={{ background: '#f4f4f4', height: 180 }} />}>
-							<img src={props.image} alt="" />
+							<img src={image} alt="" />
 						</LazyLoad>
 					</div> }
 				<div className="Item-content content">
 					<div className="title">
-						{props.title}
+						{title}
 					</div>
 					<div className="subtitle">
-						{props.subtitle}
+						{subtitle}
 					</div>
 					<div className="other">
-						{props.other}
+						{other}
 					</div>
-					{(props.price || props.discount) &&
+					{(price || discount) &&
 						<div className="price-and-discount">
 							<div className="discount">
-								{props.discount}
+								{discount}
 							</div>
 							<div className="price">
-								{props.price}
+								{price}
 							</div>
 							<div className="discounted-price">
-								{props.discountedPrice}
+								{discountedPrice}
 							</div>
 						</div>}
 				</div>
 			</Component>
-			<Actions 
-				id={props.id} 
-				onDelete={onDelete} 
-				actions={actions} />
+			<Actions actions={actions} />
 		</div>
 	);
-};
-
-Item.propTypes = {
-	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-	component: PropTypes.string,
-	hidden: PropTypes.bool,
-	image: PropTypes.string,
-	title: PropTypes.string,
-	subtitle: PropTypes.string,
-	other: PropTypes.array,
-	layout: PropTypes.oneOf(['grid', 'list']),
-	url: PropTypes.string,
-	price: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	]),
-	discount: PropTypes.string,
-	discountedPrice: PropTypes.string,
-	onHide: PropTypes.func,
-	onDelete: PropTypes.func,
-};
+}
 
 Item.defaultProps = {
 	component: 'a',
 	hidden: false,
-	other: [],
 	layout: 'grid',
+	other: [],
 	url: null,
 };
 

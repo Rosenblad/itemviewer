@@ -4,13 +4,13 @@ import uuid from 'uuid';
 
 // import { createCollection } from 'state/actions/collection';
 // import { addItems } from 'state/actions/item';
-import App from 'App';
-import configureStore from 'state/store/configureStore';
+import App from './App';
+import configureStore from './state/store/configureStore';
 // import { loadState, saveState } from 'libs/storage';
-import { saveState } from 'state/libs/localStorage';
-import { loadDataSuccess } from 'state/actions';
-import items from 'state/data/zalando.json';
-import 'index.css';
+import { saveState } from './state/libs/localStorage';
+import { loadDataSuccess } from './state/actions';
+import items from './state/data/zalando.json';
+import './index.css';
 
 // const persistedState = loadState();
 // const store = configureStore(persistedState);

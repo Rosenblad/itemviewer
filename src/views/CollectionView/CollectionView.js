@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import SearchContainer from 'containers/SearchContainer';
-import ItemViewerContainer from 'containers/ItemViewerContainer';
-import { getCollectionItemsByCollectionId } from 'state/entities/selectors';
+import SearchContainer from '../../containers/SearchContainer';
+import ItemViewerContainer from '../../containers/ItemViewerContainer';
+import { getCollectionItemsByCollectionId } from '../../state/entities/selectors';
 import Collection404 from './Collection404';
 
 class CollectionView extends React.Component {

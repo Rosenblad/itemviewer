@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Search from 'components/Search';
-import { getItems } from 'state/entities/selectors';
+import Search from '../../components/Search';
 import { getAutocompleteData } from './selectors';
 import { setVisibleItems } from './actions';
 

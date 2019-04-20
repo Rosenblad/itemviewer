@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import {
 	BrowserRouter as Router,
@@ -42,4 +41,4 @@ App.propTypes = {
 	store: PropTypes.object.isRequired,
 };
 
-export default hot(module)(App);
+export default App;

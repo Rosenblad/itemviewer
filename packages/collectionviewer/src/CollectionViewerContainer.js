@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import CollectionViewer from 'components/CollectionViewer';
+import CollectionViewer from '../../components/CollectionViewer';
 import { getCollections } from './selectors';
 import { addCollection, removeCollection } from './actions';
 
@@ -33,8 +33,8 @@ class CollectionViewerContainer extends React.Component {
 		const { collections } = this.props;
 
 		return (
-			<CollectionViewer 
-				collections={collections} 
+			<CollectionViewer
+				collections={collections}
 				name={this.state.name}
 				onDelete={this.handleDeleteClick}
 				onSubmit={this.handleSubmit}

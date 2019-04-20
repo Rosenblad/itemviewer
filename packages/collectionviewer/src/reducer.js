@@ -1,4 +1,4 @@
-import { removeItemInArray, updateObject } from 'state/reducerUtils';
+import { removeItemInArray, updateObject } from '../../state/reducerUtils';
 import { ADD_COLLECTION, REMOVE_COLLECTION, ADD_ITEMS_TO_COLLECTION } from './actions';
 
 function addCollection(state, action) {

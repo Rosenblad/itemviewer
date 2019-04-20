@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getCollectionsEntity } from 'state/entities/selectors';
+import { getCollectionsEntity } from '../../../src/state/entities/selectors';
 
 export const getCollections = createSelector(
 	[ getCollectionsEntity ],

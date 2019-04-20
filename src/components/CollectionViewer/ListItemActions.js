@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import IconButton from 'components/UI/IconButton';
-import DeleteIcon from 'components/UI/DeleteIcon';
+import IconButton from '../UI/IconButton';
+import DeleteIcon from '../UI/DeleteIcon';
 
 // const Actions = styled.div`
 // 	background: red;
