@@ -3,8 +3,6 @@ const { resolve } = require('path');
 const packagesDir = resolve(__dirname, '../packages/');
 
 module.exports = async ({ config, mode }) => {
-	// config.module.rules[0].include.push(packagesDir);
-	// config.module.rules[0].exclude.push(/node_modules/);
 	config.module.rules.push({
 		test: /\.(ts|tsx)$/,
 		use: [
@@ -19,6 +17,7 @@ module.exports = async ({ config, mode }) => {
 	config.resolve.alias = Object.assign({}, config.resolve.alias, {
 		'itemviewer': resolve(packagesDir, 'itemviewer/src'),
 		'item-ui': resolve(packagesDir, 'item-ui/src'),
+		'collectionviewer': resolve(packagesDir, 'collectionviewer/src'),
 	});
 
 	return config;

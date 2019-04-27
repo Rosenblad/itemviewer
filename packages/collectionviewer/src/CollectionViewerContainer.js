@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import CollectionViewer from '../../components/CollectionViewer';
+import CollectionViewer from './components/CollectionViewer';
 import { getCollections } from './selectors';
 import { addCollection, removeCollection } from './actions';
 
