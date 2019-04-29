@@ -1,31 +1,37 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "noErrorTruncation": true,
-    "baseUrl": ".",
-    "paths": {
-      "itemviewer": ["./packages/itemviewer/src"],
-      "itemviewer/*": ["./packages/itemviewer/src/*"]
-    }
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "strict": true,
+    "isolatedModules": true
   },
-  "exclude": ["node_modules", "**/build/", "scripts"],
-  "types": [
-    "typePatches"
+  "exclude": [
+    "node_modules",
+    "**/build/",
+    "scripts"
+  ],
+  "include": [
+    "src"
   ]
 }
