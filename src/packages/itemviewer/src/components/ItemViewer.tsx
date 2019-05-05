@@ -1,19 +1,23 @@
-import * as React from 'react';
-import { IItemProps } from '../types/index';
+import React from 'react';
+import { ItemProps } from '../types';
 import ListItems from './ListItems';
 import './Viewer.css';
 
-interface IProps {
-  items: IItemProps[];
+interface ItemViewerProps {
+  items: ItemProps[];
   hidden?: [];
-  toolbar?: any;
+  toolbar?: JSX.Element | null;
   onDelete(id: string): void;
   onHide(id: string): void;
 }
 
-function ItemViewer(props: IProps) {
-  const { items, onDelete, onHide, toolbar, hidden } = props;
-
+function ItemViewer({
+  items,
+  onDelete,
+  onHide,
+  toolbar = null,
+  hidden,
+}: ItemViewerProps): JSX.Element {
   return (
     <div className="Viewer">
       {toolbar}
@@ -26,9 +30,5 @@ function ItemViewer(props: IProps) {
     </div>
   );
 }
-
-ItemViewer.defaultProps = {
-  toolbar: null,
-};
 
 export default ItemViewer;

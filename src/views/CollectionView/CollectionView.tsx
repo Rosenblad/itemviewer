@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import SearchContainer from '../../containers/SearchContainer';
 // @ts-ignore
-import ItemViewerContainer from '../../packages/itemviewer/src/ItemViewerContainer';
+import ItemViewerContainer from '../../containers/ItemViewerContainer';
 import { getCollectionItemsByCollectionId } from '../../state/entities/selectors';
 import Collection404 from './Collection404';
 

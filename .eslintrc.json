@@ -16,6 +16,9 @@
   },
   "rules": {
     "import/no-extraneous-dependencies": "off",
-    "@typescript-eslint/interface-name-prefix": "off"
+    "@typescript-eslint/interface-name-prefix": "off",
+    "react/jsx-filename-extension": "off",
+    "spaced-comment": "off",
+    "import/prefer-default-export": "off"
   }
 }

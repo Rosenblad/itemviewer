@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { SyntheticEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -29,8 +28,13 @@ const Button = styled.button`
   outline: 0;
 `;
 
-// @ts-ignore
-const CreateCollection = props => {
+interface CreateCollectionProps {
+  onSubmit: (event: FormEvent) => void;
+  onChange: (event: SyntheticEvent<HTMLInputElement>) => void;
+  value: string;
+}
+
+function CreateCollection(props: CreateCollectionProps): JSX.Element {
   const { onSubmit, onChange, value } = props;
 
   return (
@@ -39,12 +43,6 @@ const CreateCollection = props => {
       <Button type="submit">Create</Button>
     </Form>
   );
-};
-
-CreateCollection.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-};
+}
 
 export default CreateCollection;

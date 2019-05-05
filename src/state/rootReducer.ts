@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import itemViewerReducer from '../packages/itemviewer/src/reducer';
-import collectionsReducer from '../packages/collectionviewer/src/reducer';
+import itemViewerReducer from './itemviewer/reducer';
+import collectionsReducer from './collectionviewer/reducer';
 import entitiesReducer from './entities/reducer';
 
 export default combineReducers({

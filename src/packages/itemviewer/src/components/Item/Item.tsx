@@ -1,51 +1,49 @@
+import React from 'react';
 import classnames from 'classnames';
-import * as React from 'react';
 import LazyLoad from 'react-lazyload';
-import { IItemProps } from '../../types/index';
+import { ItemProps } from '../../types';
 import Actions from './Actions';
 import './Item.css';
 
-function Item(props: IItemProps) {
-  const {
-    component: componentProp,
-    discount,
-    discountedPrice,
-    hidden,
-    id,
-    image,
-    layout,
-    onHide,
-    other,
-    price,
-    subtitle,
-    title,
-    url,
-  } = props;
-
+function Item({
+  component = 'a',
+  discount,
+  discountedPrice,
+  hidden = false,
+  id,
+  image,
+  layout = 'grid',
+  onHide,
+  other = [],
+  price,
+  subtitle,
+  title,
+  url = null,
+}: ItemProps): JSX.Element | null {
   if (hidden) {
     return null;
   }
 
-  let Component = componentProp;
+  let Component = component;
 
-  let componentPropProps = {};
+  let componentProps = {};
 
-  if (componentProp === 'a' && url) {
-    componentPropProps = Object.assign(
+  if (component === 'a' && url) {
+    componentProps = Object.assign(
       {},
       {
         href: url,
         target: '_blank',
       },
     );
-  } else if (componentProp === 'a' && !url) {
+  } else if (component === 'a' && !url) {
     Component = 'div';
   }
 
   const actions = [
     {
       label: 'Delete',
-      onClick: () => (onHide ? onHide(id) : null),
+      onClick: (): void | null => (onHide ? onHide(id) : null),
     },
   ];
 
@@ -55,7 +53,7 @@ function Item(props: IItemProps) {
         [`Item-layout-${layout}`]: layout,
       })}
     >
-      <Component className="Item-actionArea" {...componentPropProps}>
+      <Component className="Item-actionArea" {...componentProps}>
         {image && (
           <div className="image">
             <LazyLoad
@@ -87,13 +85,5 @@ function Item(props: IItemProps) {
     </div>
   );
 }
-
-Item.defaultProps = {
-  component: 'a',
-  hidden: false,
-  layout: 'grid',
-  other: [],
-  url: null,
-};
 
 export default Item;

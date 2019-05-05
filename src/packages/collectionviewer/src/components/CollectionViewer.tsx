@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FormEvent, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 
 import List from './List';
@@ -14,42 +13,39 @@ const Heading = styled.h1`
   font-weight: 300;
 `;
 
-class CollectionViewer extends React.Component {
-  render() {
-    // @ts-ignore
-    const { collections, onDelete, onSubmit, onChange } = this.props;
-
-    return (
-      <div>
-        <Heading>Choose a collection to view</Heading>
-        <List style={{ marginBottom: 16 }}>
-          // @ts-ignore
-          {collections.map(collection => (
-            <ListItem
-              key={collection.id}
-              onDeleteClick={onDelete}
-              {...collection}
-            />
-          ))}
-        </List>
-        <CreateCollection
-          // @ts-ignore
-          value={this.props.name}
-          onChange={onChange}
-          onSubmit={onSubmit}
-        />
-      </div>
-    );
-  }
+interface CollectionViewerProps {
+  collections?: [];
+  name: string;
+  onDelete: (event: MouseEvent, id: string) => void;
+  onSubmit: (e: FormEvent) => void;
+  onChange: (e: SyntheticEvent<HTMLInputElement>) => void;
 }
 
-// @ts-ignore
-CollectionViewer.propTypes = {
-  collections: PropTypes.array,
-  name: PropTypes.string,
-  onDelete: PropTypes.func,
-  onSubmit: PropTypes.func,
-  onChange: PropTypes.func,
-};
+function CollectionViewer({
+  name,
+  collections,
+  onDelete,
+  onSubmit,
+  onChange,
+}: CollectionViewerProps): JSX.Element {
+  return (
+    <div>
+      <Heading>Choose a collection to view</Heading>
+      <List style={{ marginBottom: 16 }}>
+        {collections &&
+          collections.map(
+            (collection: { id: string; name: string }): JSX.Element => (
+              <ListItem
+                key={collection.id}
+                onDeleteClick={onDelete}
+                {...collection}
+              />
+            ),
+          )}
+      </List>
+      <CreateCollection value={name} onChange={onChange} onSubmit={onSubmit} />
+    </div>
+  );
+}
 
 export default CollectionViewer;

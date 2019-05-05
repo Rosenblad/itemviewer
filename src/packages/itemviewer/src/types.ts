@@ -1,9 +1,9 @@
-export interface IItemProps {
+export interface ItemProps {
   id: string;
-  component?: any;
+  component?: React.ReactType;
   children?: React.ReactNode;
   hidden?: boolean;
-  url?: string;
+  url?: string | null;
   price?: string | number;
   layout?: 'grid' | 'list';
   image?: string;

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { HIDE_ITEM } from './actions';
+import { HIDE_ITEM } from './types';
 
 const hidden = (state = [], action: any) => {
   switch (action.type) {

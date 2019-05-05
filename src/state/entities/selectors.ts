@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
+import { AppState } from '../types';
+import { EntitiesState } from './types';
 
-// @ts-ignore
-const getEntities = state => state.entities;
+const getEntities = (state: AppState): EntitiesState => state.entities;
 
 /**
  * Get entities
@@ -26,25 +27,21 @@ export const getCollectionItemsEntity = createSelector(
  * Get entities by ID
  */
 
-// @ts-ignore
 export const getCollectionById = (state, collectionId) => {
   if (!collectionId) return false;
 
   return getCollectionsEntity(state).byId[collectionId];
 };
 
-// @ts-ignore
 export const getCollectionItemsByCollectionId = (state, collectionId) => {
   if (!collectionId) return [];
 
-  // @ts-ignore
   const { itemIds } = Object.values(getCollectionItemsEntity(state).byId).find(
     cI => cI.collectionId === collectionId,
   );
 
   const itemEntities = getItemsEntity(state).byId;
 
-  // @ts-ignore
   return itemIds.map(id => itemEntities[id]);
 };
 
@@ -57,7 +54,6 @@ export const getItems = createSelector(
   entity => {
     const { byId, allIds } = entity;
 
-    // @ts-ignore
     return allIds.map(id => byId[id]);
   },
 );

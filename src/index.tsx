@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as uuid from 'uuid';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import uuid from 'uuid';
 
 // import { createCollection } from 'state/actions/collection';
 // import { addItems } from 'state/actions/item';
@@ -9,7 +9,7 @@ import configureStore from './state/store/configureStore';
 // import { loadState, saveState } from 'libs/storage';
 import { saveState } from './state/libs/localStorage';
 import { loadDataSuccess } from './state/actions';
-import items from './state/data/zalando.json';
+import items from './state/data/zalando';
 import './index.css';
 
 // const persistedState = loadState();
@@ -43,8 +43,10 @@ const data = {
 store.dispatch(loadDataSuccess(data));
 
 // should use lodash throttle or similar
-store.subscribe(() => {
-  saveState(store.getState());
-});
+store.subscribe(
+  (): void => {
+    saveState(store.getState());
+  },
+);
 
 ReactDOM.render(<App store={store} />, document.getElementById('root'));

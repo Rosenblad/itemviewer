@@ -2,10 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es5",
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "preserve",
@@ -26,12 +23,6 @@
     "strict": true,
     "isolatedModules": true
   },
-  "exclude": [
-    "node_modules",
-    "**/build/",
-    "scripts"
-  ],
-  "include": [
-    "src"
-  ]
+  "exclude": ["node_modules", "**/build/", "scripts"],
+  "include": ["src"]
 }

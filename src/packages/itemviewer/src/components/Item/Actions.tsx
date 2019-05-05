@@ -8,16 +8,18 @@ interface IActionsProps {
   }[];
 }
 
-function Actions(props: IActionsProps) {
+function Actions(props: IActionsProps): JSX.Element {
   const { actions } = props;
 
   return (
     <div className="Item-actions">
-      {actions.map(({ label, ...other }) => (
-        <button key={label} className="Item-action" {...other}>
-          {label}
-        </button>
-      ))}
+      {actions.map(
+        ({ label, ...other }): JSX.Element => (
+          <button type="button" key={label} className="Item-action" {...other}>
+            {label}
+          </button>
+        ),
+      )}
     </div>
   );
 }

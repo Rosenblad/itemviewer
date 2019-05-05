@@ -2,16 +2,15 @@
 
 > Sorted by priority.
 
-__Not done__
-
 - Refactor app to tsx
 - Refactor app to use react hooks
+- Clean up dependencies
 - Drag and drop
 - Add Save button
-+ App
-	- Plugin API for internal plugins (add menu items, actions etc)
-	- Move application state to respective application
-	- Normalize data
+- App
+  - Plugin API for internal plugins (add menu items, actions etc)
+  - Move application state to respective application
+  - Normalize data
 - Click to view entire item
 - Convert to CSS Modules or cssinjs
 - Quick preview more info

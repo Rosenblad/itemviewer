@@ -2,11 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import CollectionViewerContainer from './packages/collectionviewer/src/CollectionViewerContainer';
+import CollectionViewerContainer from './containers/CollectionViewerContainer';
 import CollectionView from './views/CollectionView';
 
-// @ts-ignore
-function App(props) {
+function App(props): JSX.Element {
   const { store } = props;
 
   return (

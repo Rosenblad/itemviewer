@@ -1,13 +1,20 @@
-export function normalize(entities: any) {
-  if (!entities) return false;
+interface Normalized {
+  byId: {};
+  allIds: string[];
+}
 
+export function normalize(entities: []): Normalized {
   const byId = {};
-  const allIds: any = [];
+  const allIds: string[] = [];
 
-  entities.forEach((e: any) => {
-    byId[e.id] = e;
-    allIds.push(e.id);
-  });
+  if (!entities) return { byId, allIds };
+
+  entities.forEach(
+    (e: { id: string }): void => {
+      byId[e.id] = e;
+      allIds.push(e.id);
+    },
+  );
 
   return {
     byId,
@@ -15,45 +22,50 @@ export function normalize(entities: any) {
   };
 }
 
-export function updateObject(oldObject: {}, newValues: {}) {
+export function updateObject(oldObject: {}, newValues: {}): {} {
   return Object.assign({}, oldObject, newValues);
 }
 
 export function updateItemInArray(
   array: [],
-  itemId: any,
-  updateItemCallback: any,
-) {
-  const updatedItems = array.map((item: any) => {
-    if (item.id !== itemId) {
-      return item;
-    }
+  itemId: string,
+  updateItemCallback: (item: {}) => {},
+): {}[] {
+  const updatedItems = array.map(
+    (item: { id: string }): {} => {
+      if (item.id !== itemId) {
+        return item;
+      }
 
-    const updatedItem = updateItemCallback(item);
-    return updatedItem;
-  });
+      const updatedItem = updateItemCallback(item);
+      return updatedItem;
+    },
+  );
 
   return updatedItems;
 }
 
-export function removeItemInObject(object: any, deleteKey: any) {
+export function removeItemInObject(object: {}, deleteKey: string): {} {
   return Object.keys(object)
-    .filter(key => key !== deleteKey)
-    .reduce((result, current) => {
-      // eslint-disable-next-line
-			result[current] = object[current];
-      return result;
+    .filter((key): boolean => key !== deleteKey)
+    .reduce((result, current): {} => {
+      return Object.assign({}, result, { [current]: object[current] });
     }, {});
 }
 
-export function removeItemInArray(array: [], itemId: any) {
-  const updatedItems = array.filter((item: any) => {
-    if (item.id !== itemId) {
-      return true;
-    }
+export function removeItemInArray(
+  array: { id: string }[],
+  itemId: string,
+): { id: string }[] {
+  const updatedItems: { id: string }[] = array.filter(
+    (item: { id: string }): boolean => {
+      if (item.id !== itemId) {
+        return true;
+      }
 
-    return false;
-  });
+      return false;
+    },
+  );
 
   return updatedItems;
 }

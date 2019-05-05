@@ -1,73 +1,69 @@
 import React, { useState } from 'react';
 import debounce from 'debounce';
-import './ItemImage.css';
 
 interface ItemImageProps {
-	image?: string;
-	alt?: string;
-	imageRef(node: HTMLImageElement): void;
+  image?: string;
+  alt?: string;
 }
 
-function ItemImage(props: ItemImageProps) {
+function ItemImage(props: ItemImageProps): JSX.Element {
+  const [imageDimensions, setImageDimensions] = useState({
+    height: 0,
+    width: 0,
+    naturalWidth: 0,
+    naturalHeight: 0,
+  });
 
-	const [image, setImage] = useState({
-		height: 0,
-		width: 0,
-		naturalWidth: 0,
-		naturalHeight: 0,
-	});
+  let imgNode: HTMLImageElement;
 
-	const imgNode = React.createRef();
+  const updateImage = debounce((): void => {
+    setImageDimensions({
+      height: imgNode.height,
+      width: imgNode.width,
+      naturalWidth: imgNode.naturalWidth,
+      naturalHeight: imgNode.naturalHeight,
+    });
 
-	const updateImage = debounce(() => {
-		setImage({
-				height: imgNode.height,
-				width: imgNode.width,
-				naturalWidth: imgNode.naturalWidth,
-				naturalHeight: imgNode.naturalHeight,
-			},
-		});
+    if (imgNode.height !== imageDimensions.height) {
+      setTimeout(updateImage, 10);
+    }
+  }, 100);
 
-		if (this.imgNode.height !== image.height) {
-			setTimeout(this.updateImage, 10);
-		}
-	}, 100);
+  const setImageRef = (node: HTMLImageElement): void => {
+    imgNode = node;
 
-	imgRef = node => {
-		this.imgNode = node;
+    node.addEventListener(
+      'load',
+      (): void => {
+        updateImage();
 
-		node.addEventListener('load', event => {
-			this.updateImage();
+        window.addEventListener(
+          'resize',
+          (): void => {
+            updateImage();
+          },
+        );
+      },
+    );
+  };
 
-			window.addEventListener('resize', () => {
-				this.updateImage();
-			});
-		});
-	};
+  const { image, alt } = props;
+  let height;
 
-	const {
-		image,
-		imageRef,
-		alt,
-		...other
-	} = props;
-	let height;
+  if (image) {
+    const ratio = imageDimensions.naturalWidth / imageDimensions.naturalHeight;
 
-		if (image) {
-			const ratio = image.naturalWidth / image.naturalHeight;
+    height = imageDimensions.width * ratio;
+  }
 
-			height = image.width * ratio;
-		}
-
-		return (
-			<img
-				style={height ? { height } : {}}
-				src={image}
-				alt={alt}
-				ref={imageRef}
-				{...other} />
-		);
-
+  return (
+    <img
+      style={height ? { height } : {}}
+      src={image}
+      alt={alt}
+      ref={setImageRef}
+    />
+  );
 }
 
 export default ItemImage;

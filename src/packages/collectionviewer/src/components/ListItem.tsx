@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// @ts-ignore
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ListItemActions from './ListItemActions';
@@ -30,25 +28,23 @@ const StyledLink = styled(Link)`
   font-size: 20px;
 `;
 
-// @ts-ignore
-const ListItem = props => {
-  // @ts-ignore
-  const handleDeleteClick = event => {
-    props.onDeleteClick(event, props.id);
+interface ListItemProps {
+  id: string;
+  onDeleteClick: (event: MouseEvent, id: string) => void;
+  name: string;
+}
+
+function ListItem({ id, onDeleteClick, name }: ListItemProps): JSX.Element {
+  const handleDeleteClick = (event: MouseEvent): void => {
+    onDeleteClick(event, id);
   };
 
   return (
     <RootEl>
-      <StyledLink to={`/collection/${props.id}`}>{props.name}</StyledLink>
+      <StyledLink to={`/collection/${id}`}>{name}</StyledLink>
       <ListItemActions onDeleteClick={handleDeleteClick} />
     </RootEl>
   );
-};
-
-ListItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  onDeleteClick: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-};
+}
 
 export default ListItem;
