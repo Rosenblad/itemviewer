@@ -1,6 +1,5 @@
 import React from 'react';
 import { forceCheck } from 'react-lazyload';
-// @ts-ignore (remove when @types/react-redux gets updated)
 import { useDispatch, useSelector } from 'react-redux';
 import { hideItem, deleteItem } from '../state/itemviewer/actions';
 import ItemViewer from '../packages/itemviewer/src/components';
@@ -8,24 +7,27 @@ import { getHidden } from '../state/itemviewer/selectors';
 import { ItemProps } from '../packages/itemviewer/src/types';
 import { AppState } from '../state/types';
 
-interface IProps {
+export interface ItemViewerContainerProps {
   items: ItemProps[];
   deleteItem?(id: string): void;
   hideItem?(id: string): void;
+  [propName: string]: any;
 }
 
-function ItemViewerContainer({ items = [] }: IProps): JSX.Element {
+function ItemViewerContainer({
+  items = [],
+  ...other
+}: ItemViewerContainerProps): JSX.Element {
   const hidden = useSelector((state: AppState): [] => getHidden(state));
-  const dispatchHideItem = useDispatch(hideItem);
-  const dispatchDeleteItem = useDispatch(deleteItem);
+  const dispatch = useDispatch();
 
   const handleHide = (id: string): void => {
-    dispatchHideItem(id);
+    dispatch(hideItem(id));
     forceCheck();
   };
 
   const handleDelete = (id: string): void => {
-    dispatchDeleteItem(id);
+    dispatch(deleteItem(id));
     forceCheck();
   };
 
@@ -35,6 +37,7 @@ function ItemViewerContainer({ items = [] }: IProps): JSX.Element {
       onDelete={handleDelete}
       onHide={handleHide}
       hidden={hidden}
+      {...other}
     />
   );
 }
