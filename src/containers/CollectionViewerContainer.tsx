@@ -1,8 +1,8 @@
 import React, { useState, FormEvent, SyntheticEvent } from 'react';
-// @ts-ignore
 import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'uuid';
 
+import { Collections } from '../state/collectionviewer/types';
 import CollectionViewer from '../packages/collectionviewer/src/components/CollectionViewer';
 import { getCollections } from '../state/collectionviewer/selectors';
 import {
@@ -14,9 +14,9 @@ import { AppState } from '../state/types';
 function CollectionViewerContainer(): JSX.Element {
   const [name, setName] = useState('');
   const collections = useSelector(
-    (state: AppState): {}[] => getCollections(state),
+    (state: AppState): Collections => getCollections(state),
   );
-  const dispatchAddCollection = useDispatch(addCollection);
+  const dispatch = useDispatch();
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>): void => {
     setName(e.currentTarget.value);
@@ -25,10 +25,12 @@ function CollectionViewerContainer(): JSX.Element {
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
 
-    dispatchAddCollection({
-      id: uuid.v4(),
-      name,
-    });
+    dispatch(
+      addCollection({
+        id: uuid.v4(),
+        name,
+      }),
+    );
   };
 
   function handleDeleteClick(_event: Event, id: string): void {

@@ -1,6 +1,6 @@
 import { CollectionViewerState } from './collectionviewer/types';
 import { ItemViewerState } from './itemviewer/types';
-import { EntitiesState, Entity } from './entities/types';
+import { EntitiesState, ItemEntity } from './entities/types';
 
 export interface AppState {
   collections: CollectionViewerState;
@@ -14,8 +14,8 @@ export interface LoadDataSuccessAction {
   collections: {
     id: string;
     name: string;
-  }[],
-  items: Entity[],
+  }[];
+  items: ItemEntity[];
   collectionItems: {
     id: string;
     collectionId: string;

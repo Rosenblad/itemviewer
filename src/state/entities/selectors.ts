@@ -1,8 +1,20 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../types';
-import { EntitiesState } from './types';
+import {
+  EntitiesState,
+  CollectionsEntity,
+  ItemsEntity,
+  CollectionItemsEntity,
+  CollectionEntity,
+  CollectionItem,
+  ItemsById,
+  ItemEntity,
+  CollectionItemsById,
+} from './types';
 
-const getEntities = (state: AppState): EntitiesState => state.entities;
+export function getEntities(state: AppState): EntitiesState {
+  return state.entities;
+}
 
 /**
  * Get entities
@@ -10,39 +22,54 @@ const getEntities = (state: AppState): EntitiesState => state.entities;
 
 export const getCollectionsEntity = createSelector(
   [getEntities],
-  entities => entities.collections,
+  (entities: EntitiesState): CollectionsEntity => entities.collections,
 );
 
 export const getItemsEntity = createSelector(
   [getEntities],
-  entities => entities.items,
+  (entities: EntitiesState): ItemsEntity => entities.items,
 );
 
 export const getCollectionItemsEntity = createSelector(
   [getEntities],
-  entities => entities.collectionItems,
+  (entities: EntitiesState): CollectionItemsEntity => entities.collectionItems,
 );
 
 /**
  * Get entities by ID
  */
 
-export const getCollectionById = (state, collectionId) => {
+export const getCollectionById = (
+  state: AppState,
+  collectionId: string,
+): CollectionEntity | false => {
   if (!collectionId) return false;
 
   return getCollectionsEntity(state).byId[collectionId];
 };
 
-export const getCollectionItemsByCollectionId = (state, collectionId) => {
+export const getCollectionItemsByCollectionId = (
+  state: AppState,
+  collectionId: string,
+): ItemEntity[] | [] => {
   if (!collectionId) return [];
 
-  const { itemIds } = Object.values(getCollectionItemsEntity(state).byId).find(
-    cI => cI.collectionId === collectionId,
+  const collectionItemsById: CollectionItemsById = getCollectionItemsEntity(
+    state,
+  ).byId;
+
+  const collectionItem = Object.values(collectionItemsById).find(
+    (collectionItemTemp: CollectionItem): boolean =>
+      collectionItemTemp.collectionId === collectionId,
   );
 
-  const itemEntities = getItemsEntity(state).byId;
+  if (!collectionItem) return [];
 
-  return itemIds.map(id => itemEntities[id]);
+  const { itemIds } = collectionItem;
+
+  const itemsById: ItemsById = getItemsEntity(state).byId;
+
+  return itemIds.map((id: string): ItemEntity => itemsById[id]);
 };
 
 /**
@@ -51,9 +78,9 @@ export const getCollectionItemsByCollectionId = (state, collectionId) => {
 
 export const getItems = createSelector(
   [getItemsEntity],
-  entity => {
+  (entity: ItemsEntity): ItemEntity[] => {
     const { byId, allIds } = entity;
 
-    return allIds.map(id => byId[id]);
+    return allIds.map((id: string): ItemEntity => byId[id]);
   },
 );

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import List from './List';
 import ListItem from './ListItem';
 import CreateCollection from './CreateCollection';
+import { Collection } from '../../../../state/collectionviewer/types';
 
 const Heading = styled.h1`
   margin: 0 32px 16px;
@@ -13,15 +14,15 @@ const Heading = styled.h1`
   font-weight: 300;
 `;
 
-interface CollectionViewerProps {
-  collections?: [];
+export interface CollectionViewerProps {
+  collections?: Collection[];
   name: string;
   onDelete: (event: MouseEvent, id: string) => void;
   onSubmit: (e: FormEvent) => void;
   onChange: (e: SyntheticEvent<HTMLInputElement>) => void;
 }
 
-function CollectionViewer({
+export default function CollectionViewer({
   name,
   collections,
   onDelete,
@@ -47,5 +48,3 @@ function CollectionViewer({
     </div>
   );
 }
-
-export default CollectionViewer;

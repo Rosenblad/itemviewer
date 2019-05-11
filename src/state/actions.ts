@@ -1,12 +1,12 @@
 import { LOAD_DATA_SUCCESS, LoadDataSuccessAction } from './types';
-import { Entity } from './entities/types';
+import { ItemEntity } from './entities/types';
 
 interface Props {
   collections: {
     id: string;
     name: string;
   }[];
-  items: Entity[];
+  items: ItemEntity[];
   collectionItems: {
     id: string;
     collectionId: string;

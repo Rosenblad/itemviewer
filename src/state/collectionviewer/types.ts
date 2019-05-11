@@ -1,12 +1,13 @@
-import { Entity } from '../entities/types';
+import { ItemEntity } from '../entities/types';
 
 export interface Collection {
   id: string;
   name: string;
-  items?: Entity[];
+  items?: ItemEntity[];
 }
 
-export type CollectionViewerState = Collection[];
+export type Collections = Collection[];
+export type CollectionViewerState = Collections;
 
 export const ADD_COLLECTION = 'ADD_COLLECTION';
 export const REMOVE_COLLECTION = 'REMOVE_COLLECTION';
