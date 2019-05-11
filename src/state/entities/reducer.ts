@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import { normalize } from '../reducerUtils';
-import { LOAD_DATA_SUCCESS, EntitiesState } from './types';
+import { CollectionsEntity, ItemsEntity, CollectionItemsEntity } from './types';
+import { LOAD_DATA_SUCCESS } from '../types';
 
-const initialState: EntitiesState = {
+const initialState = {
   byId: {},
   allIds: [],
 };
@@ -10,7 +11,7 @@ const initialState: EntitiesState = {
 const collectionsReducer = (
   state = initialState,
   action: any,
-): EntitiesState => {
+): CollectionsEntity => {
   switch (action.type) {
     case LOAD_DATA_SUCCESS:
       return normalize(action.collections);
@@ -19,7 +20,7 @@ const collectionsReducer = (
   }
 };
 
-const itemsReducer = (state = initialState, action: any): EntitiesState => {
+const itemsReducer = (state = initialState, action: any): ItemsEntity => {
   switch (action.type) {
     case LOAD_DATA_SUCCESS:
       return normalize(action.items);
@@ -28,7 +29,10 @@ const itemsReducer = (state = initialState, action: any): EntitiesState => {
   }
 };
 
-const collectionItemsReducer = (state = initialState, action: any) => {
+const collectionItemsReducer = (
+  state = initialState,
+  action: any,
+): CollectionItemsEntity => {
   switch (action.type) {
     case LOAD_DATA_SUCCESS:
       return normalize(action.collectionItems);

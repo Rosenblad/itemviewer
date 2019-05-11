@@ -5,13 +5,8 @@ import { Store } from 'redux';
 import RootProviders from './RootProviders';
 import CollectionViewerContainer from './containers/CollectionViewerContainer';
 import CollectionView from './views/CollectionView';
-import { AppState } from './state/types';
 
-export default function App({
-  store,
-}: {
-  store: Store<AppState>;
-}): JSX.Element {
+export default function App({ store }: { store: Store<{}> }): JSX.Element {
   return (
     <RootProviders store={store}>
       <div>

@@ -20,6 +20,7 @@
     "@types/react-redux": "7.0.8",
     "@types/react-router": "5.0.0",
     "@types/react-router-dom": "^4.3.2",
+    "@types/react-select": "2.0.17",
     "@types/storybook__react": "4.0.1",
     "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.7.0",

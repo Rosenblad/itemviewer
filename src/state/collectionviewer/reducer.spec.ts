@@ -1,3 +1,4 @@
+// @ts-nocheck
 import reducer from './reducer';
 // @ts-ignore
 import { CREATE_COLLECTION } from './actions';
@@ -15,6 +16,7 @@ describe('collections reducer', () => {
   it('should handle CREATE_COLLECTION', () => {
     // @ts-ignore
     expect(
+      // @ts-ignore
       reducer(initialState, {
         type: CREATE_COLLECTION,
         collection: {

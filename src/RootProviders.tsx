@@ -2,11 +2,10 @@ import * as React from 'react';
 import { Provider as ReactReduxProvider } from 'react-redux';
 import { Store } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
-import { AppState } from './state/types';
 
 export interface RootProvidersProps {
   children: JSX.Element;
-  store: Store<AppState>;
+  store: Store<{}>;
 }
 
 export default function RootProviders({

@@ -1,6 +1,5 @@
-import { Action, Dispatch } from 'redux';
-
 /// <reference types="react-scripts" />
+import { Action, Dispatch } from 'redux';
 
 declare module 'react-redux' {
   export function useSelector<TState, TSelected>(

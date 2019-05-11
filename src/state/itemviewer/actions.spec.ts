@@ -1,13 +1,14 @@
-import * as itemActions from './actions';
+import { HIDE_ITEM } from './types';
+import { hideItem } from './actions';
 
-describe('item actions', () => {
-  it('should create an action hide an item', () => {
+describe('item actions', (): void => {
+  it('should create an action hide an item', (): void => {
     const id = 'hello';
     const expectedAction = {
-      type: itemActions.HIDE_ITEM,
+      type: HIDE_ITEM,
       id,
     };
 
-    expect(itemActions.hideItem(id)).toEqual(expectedAction);
+    expect(hideItem(id)).toEqual(expectedAction);
   });
 });

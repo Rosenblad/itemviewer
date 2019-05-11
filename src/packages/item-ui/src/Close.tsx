@@ -10,10 +10,10 @@ const IconWrapper = styled.div`
   cursor: pointer;
 `;
 
-const CloseIcon = () => (
-  <IconWrapper>
-    <img src={CloseIconSvg} />
-  </IconWrapper>
-);
-
-export default CloseIcon;
+export default function CloseIcon(): JSX.Element {
+  return (
+    <IconWrapper>
+      <img src={CloseIconSvg} />
+    </IconWrapper>
+  );
+}

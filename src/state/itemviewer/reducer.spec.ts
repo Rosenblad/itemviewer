@@ -1,5 +1,6 @@
+// @ts-nocheck
 import reducer from './reducer';
-import { HIDE_ITEM } from './actions';
+import { HIDE_ITEM } from './types';
 
 const initialState = [
   {
@@ -8,13 +9,13 @@ const initialState = [
   },
 ];
 
-describe('items reducer', () => {
-  it('should return the initial state', () => {
+describe('items reducer', (): void => {
+  it('should return the initial state', (): void => {
     // @ts-ignore
     expect(reducer(initialState, {})).toEqual(initialState);
   });
 
-  it('should handle HIDE_ITEM', () => {
+  it('should handle HIDE_ITEM', (): void => {
     expect(
       reducer(initialState, {
         type: HIDE_ITEM,

@@ -4,8 +4,10 @@ import {
   REMOVE_COLLECTION,
   ADD_ITEMS_TO_COLLECTION,
   CollectionViewerState,
-  CollectionViewerActionTypes,
   AddCollectionAction,
+  Collection,
+  AddItemsToCollectionAction,
+  RemoveCollectionAction,
 } from './types';
 
 function addCollection(
@@ -17,22 +19,24 @@ function addCollection(
 
 function removeCollection(
   state: CollectionViewerState,
-  action: CollectionViewerActionTypes,
+  action: RemoveCollectionAction,
 ): CollectionViewerState {
   return removeItemInArray(state, action.id);
 }
 
 function addItemsToCollection(
   state: CollectionViewerState,
-  action: CollectionViewerActionTypes,
+  action: AddItemsToCollectionAction,
 ): CollectionViewerState {
-  return state.map((collection: any) => {
-    if (collection.id === action.collectionId) {
-      return updateObject(collection, { items: action.items });
-    }
+  return state.map(
+    (collection: any): Collection => {
+      if (collection.id === action.collectionId) {
+        return updateObject(collection, { items: action.items });
+      }
 
-    return collection;
-  });
+      return collection;
+    },
+  );
 }
 
 export default function collectionsReducer(

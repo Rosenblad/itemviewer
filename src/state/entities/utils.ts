@@ -1,9 +1,9 @@
-import { LOAD_DATA_SUCCESS } from '../actions';
+import { LOAD_DATA_SUCCESS } from '../types';
 import { normalize } from '../reducerUtils';
 
-export function createEntity(key: any) {
+export function createEntity(key: any): any {
   return {
-    reducer: (state = {}, action: any) => {
+    reducer: (state = {}, action: any): any => {
       switch (action.type) {
         case LOAD_DATA_SUCCESS:
           return normalize(action[key]);
@@ -11,6 +11,6 @@ export function createEntity(key: any) {
           return state;
       }
     },
-    selector: (state: any) => state[key],
+    selector: (state: any): any => state[key],
   };
 }

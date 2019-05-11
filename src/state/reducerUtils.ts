@@ -3,14 +3,14 @@ interface Normalized {
   allIds: string[];
 }
 
-export function normalize(entities: []): Normalized {
+export function normalize<T extends { id: string }>(entities: T[]): Normalized {
   const byId = {};
   const allIds: string[] = [];
 
   if (!entities) return { byId, allIds };
 
   entities.forEach(
-    (e: { id: string }): void => {
+    (e: T): void => {
       byId[e.id] = e;
       allIds.push(e.id);
     },
@@ -22,7 +22,7 @@ export function normalize(entities: []): Normalized {
   };
 }
 
-export function updateObject(oldObject: {}, newValues: {}): {} {
+export function updateObject<T, K>(oldObject: T, newValues: K): T & K {
   return Object.assign({}, oldObject, newValues);
 }
 
@@ -53,12 +53,12 @@ export function removeItemInObject(object: {}, deleteKey: string): {} {
     }, {});
 }
 
-export function removeItemInArray(
-  array: { id: string }[],
+export function removeItemInArray<T extends { id: string }>(
+  array: T[],
   itemId: string,
-): { id: string }[] {
-  const updatedItems: { id: string }[] = array.filter(
-    (item: { id: string }): boolean => {
+): T[] {
+  const updatedItems: T[] = array.filter(
+    (item: T): boolean => {
       if (item.id !== itemId) {
         return true;
       }

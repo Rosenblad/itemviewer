@@ -1,83 +1,71 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-// @ts-ignore
+import React, { useEffect, useState, useRef } from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import Fuse from 'fuse.js';
+import { Option } from '../../containers/SearchContainer/types';
 
-class Search extends React.Component {
-  state = {
-    query: '',
-    selectedOption: '',
-  };
+export interface SearchProps {
+  items: Option[];
+  onChange(ids: string[]): void;
+}
 
-  componentDidMount() {
-    const options = {
+interface FuseOptions {
+  keys: string[];
+  threshold: number;
+}
+
+export default function Search({ items, onChange }: SearchProps): JSX.Element {
+  // const [query, setQuery] = useState('');
+  const [selectedOption, setSelectedOption] = useState();
+  const fuse = useRef<{}>();
+
+  useEffect((): void => {
+    const options: FuseOptions = {
       keys: ['title', 'subtitle'],
       threshold: 0.1,
     };
 
-    // @ts-ignore
-    this.fuse = new Fuse(this.props.items, options);
-  }
+    if (items === undefined) return;
 
-  fuse = null;
+    fuse.current = new Fuse(items, options);
+  }, [fuse, items]);
 
-  // @ts-ignore
-  handleChange = e => {
-    const { value } = e.target;
-    this.setState({ query: value });
+  // const handleChange = e => {
+  //   const { value } = e.target;
+  //   setQuery({ query: value });
 
-    if (this.fuse) {
-      // @ts-ignore
-      const searchResult = this.fuse.search(value);
-      // @ts-ignore
-      const ids = searchResult.map(v => v.id);
+  //   if (fuse) {
+  //     const searchResult = fuse.search(value);
+  //     const ids = searchResult.map(v => v.id);
 
-      // @ts-ignore
-      if (this.props.onChange) {
-        // @ts-ignore
-        this.props.onChange({ ids });
-      }
-    }
+  //     if (onChange) {
+  //       onChange({ ids });
+  //     }
+  //   }
+  // };
+
+  const handleSelect = (selected: any): void => {
+    // console.log('handleSelect', selectedOption);
+    setSelectedOption(selected);
   };
 
-  // @ts-ignore
-  handleSelect = selectedOption => {
-    console.log('handleSelect', selectedOption);
-    this.setState({ selectedOption });
-  };
-
-  handleSubmit() {
-    console.log('handleSubmit');
+  function handleSubmit(): void {
+    // console.log('handleSubmit');
   }
 
-  render() {
-    const { selectedOption } = this.state;
-    // @ts-ignore
-    const value = selectedOption && selectedOption.value;
+  const value = selectedOption && selectedOption.value;
 
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <Select
-          name="search"
-          value={value}
-          arrowRenderer={null}
-          onChange={this.handleSelect}
-          // @ts-ignore
-          options={this.props.items}
-          openOnClick={false}
-          placeholder="Search..."
-        />
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <Select
+        name="search"
+        value={value}
+        arrowRenderer={null}
+        onChange={handleSelect}
+        options={items}
+        openOnClick={false}
+        placeholder="Search..."
+      />
+    </form>
+  );
 }
-
-// @ts-ignore
-Search.propTypes = {
-  items: PropTypes.array.isRequired,
-  onChange: PropTypes.func,
-};
-
-export default Search;
