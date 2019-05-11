@@ -13,11 +13,12 @@ import { loadDataSuccess } from './state/actions';
 import items from './state/data/zalando';
 import './index.css';
 import { ItemEntity } from './state/entities/types';
+import { AppState } from './state/types';
 
 // const persistedState = loadState();
 // const store = configureStore(persistedState);
 
-const store: Store<{}> = configureStore();
+const store: Store<AppState> = configureStore();
 
 const collectionId = '96388d7e-b578-490a-a7e3-4228a7f08446';
 

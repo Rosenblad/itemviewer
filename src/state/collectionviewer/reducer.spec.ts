@@ -6,14 +6,14 @@ import { CREATE_COLLECTION } from './actions';
 // @ts-ignore
 const initialState = [];
 
-describe('collections reducer', () => {
-  it('should return the initial state', () => {
+describe('collections reducer', (): void => {
+  it('should return the initial state', (): void => {
     // @ts-ignore
     expect(reducer(initialState, {})).toEqual(initialState);
   });
 
   // @ts-ignore
-  it('should handle CREATE_COLLECTION', () => {
+  it('should handle CREATE_COLLECTION', (): void => {
     // @ts-ignore
     expect(
       // @ts-ignore

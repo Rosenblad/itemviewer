@@ -10,10 +10,10 @@ const IconWrapper = styled.div`
   cursor: pointer;
 `;
 
-const DeleteIcon = () => (
-  <IconWrapper>
-    <img src={DeleteIconSvg} />
-  </IconWrapper>
-);
-
-export default DeleteIcon;
+export default function DeleteIcon(): JSX.Element {
+  return (
+    <IconWrapper>
+      <img src={DeleteIconSvg} />
+    </IconWrapper>
+  );
+}

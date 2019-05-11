@@ -1,5 +1,5 @@
-import React from 'react';
+import * as React from 'react';
 
-const Collection404 = () => <div>No items in this collection yet.</div>;
-
-export default Collection404;
+export default function Collection404(): JSX.Element {
+  return <div>No items in this collection yet.</div>;
+}

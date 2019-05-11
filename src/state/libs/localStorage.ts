@@ -1,4 +1,6 @@
-export const loadState = () => {
+import { AppState } from '../types';
+
+export const loadState = (): any => {
   try {
     const serializedState = localStorage.getItem('state');
 
@@ -12,8 +14,7 @@ export const loadState = () => {
   }
 };
 
-// @ts-ignore
-export const saveState = state => {
+export const saveState = (state: AppState): void => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);

@@ -1,19 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-// @ts-ignore
+import * as React from 'react';
 import IconButton from '../../../item-ui/src/IconButton';
-// @ts-ignore
 import DeleteIcon from '../../../item-ui/src/DeleteIcon';
 
-// @ts-ignore
-const ListItemActions = props => (
-  <IconButton onClick={props.onDeleteClick}>
-    <DeleteIcon />
-  </IconButton>
-);
+export interface ListItemActionsProps {
+  onDeleteClick(): void;
+}
 
-ListItemActions.propTypes = {
-  onDeleteClick: PropTypes.func.isRequired,
-};
-
-export default ListItemActions;
+export default function ListItemActions({
+  onDeleteClick,
+}: ListItemActionsProps): JSX.Element {
+  return (
+    <IconButton onClick={onDeleteClick}>
+      <DeleteIcon />
+    </IconButton>
+  );
+}

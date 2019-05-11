@@ -18,7 +18,7 @@ export interface ById {
   [id: string]: ItemEntity;
 }
 
-export type AllIds = ReadonlyArray<string>;
+export type AllIds = readonly string[];
 
 export interface CollectionItem {
   collectionId: string;
