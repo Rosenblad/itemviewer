@@ -5,8 +5,8 @@ interface Props {
   collections: {
     id: string;
     name: string;
-  }[],
-  items: Entity[],
+  }[];
+  items: Entity[];
   collectionItems: {
     id: string;
     collectionId: string;
