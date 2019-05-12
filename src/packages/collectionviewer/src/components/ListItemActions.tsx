@@ -3,7 +3,7 @@ import IconButton from '../../../item-ui/src/IconButton';
 import DeleteIcon from '../../../item-ui/src/DeleteIcon';
 
 export interface ListItemActionsProps {
-  onDeleteClick(): void;
+  onDeleteClick(event: React.MouseEvent): void;
 }
 
 export default function ListItemActions({

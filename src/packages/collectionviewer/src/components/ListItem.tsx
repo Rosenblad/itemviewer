@@ -30,12 +30,12 @@ const StyledLink = styled(Link)`
 
 interface ListItemProps {
   id: string;
-  onDeleteClick: (event: MouseEvent, id: string) => void;
+  onDeleteClick: (event: React.MouseEvent, id: string) => void;
   name: string;
 }
 
 function ListItem({ id, onDeleteClick, name }: ListItemProps): JSX.Element {
-  const handleDeleteClick = (event: MouseEvent): void => {
+  const handleDeleteClick = (event: React.MouseEvent): void => {
     onDeleteClick(event, id);
   };
 

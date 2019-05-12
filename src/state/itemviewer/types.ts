@@ -1,5 +1,7 @@
+export type Hidden = string[] | [];
+
 export interface ItemViewerState {
-  hidden?: string[];
+  hidden?: Hidden;
 }
 
 export const HIDE_ITEM = 'HIDE_ITEM';

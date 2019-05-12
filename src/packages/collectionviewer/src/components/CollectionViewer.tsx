@@ -17,7 +17,7 @@ const Heading = styled.h1`
 export interface CollectionViewerProps {
   collections?: Collection[];
   name: string;
-  onDelete: (event: MouseEvent, id: string) => void;
+  onDelete: (event: React.MouseEvent, id: string) => void;
   onSubmit: (e: FormEvent) => void;
   onChange: (e: SyntheticEvent<HTMLInputElement>) => void;
 }

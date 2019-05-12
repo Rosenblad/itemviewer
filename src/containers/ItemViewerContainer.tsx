@@ -6,6 +6,7 @@ import ItemViewer from '../packages/itemviewer/src/components';
 import { getHidden } from '../state/itemviewer/selectors';
 import { ItemProps } from '../packages/itemviewer/src/types';
 import { AppState } from '../state/types';
+import { Hidden } from '../state/itemviewer/types';
 
 export interface ItemViewerContainerProps {
   items: ItemProps[];
@@ -18,7 +19,7 @@ function ItemViewerContainer({
   items = [],
   ...other
 }: ItemViewerContainerProps): JSX.Element {
-  const hidden = useSelector((state: AppState): [] => getHidden(state));
+  const hidden = useSelector((state: AppState): Hidden => getHidden(state));
   const dispatch = useDispatch();
 
   const handleHide = (id: string): void => {

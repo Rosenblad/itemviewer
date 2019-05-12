@@ -18,7 +18,8 @@ export interface ById {
   [id: string]: ItemEntity;
 }
 
-export type AllIds = readonly string[];
+// eslint-disable-next-line @typescript-eslint/array-type
+export type AllIds = ReadonlyArray<string>;
 
 export interface CollectionItem {
   collectionId: string;

@@ -2,8 +2,8 @@
 
 > Sorted by priority.
 
-- Refactor app to tsx
-- Refactor app to use react hooks
+- Rewrite Item component
+- Implement CSS Grid
 - Clean up dependencies
 - Drag and drop
 - Add Save button

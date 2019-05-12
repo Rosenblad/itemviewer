@@ -33,7 +33,7 @@ function CollectionViewerContainer(): JSX.Element {
     );
   };
 
-  function handleDeleteClick(_event: Event, id: string): void {
+  function handleDeleteClick(_event: React.MouseEvent, id: string): void {
     removeCollection(id);
   }
 
