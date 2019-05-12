@@ -1,12 +1,12 @@
 import React from 'react';
 import { forceCheck } from 'react-lazyload';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideItem, deleteItem } from '../state/itemviewer/actions';
-import ItemViewer from '../packages/itemviewer/src/components';
-import { getHidden } from '../state/itemviewer/selectors';
-import { ItemProps } from '../packages/itemviewer/src/types';
-import { AppState } from '../state/types';
-import { Hidden } from '../state/itemviewer/types';
+import { hideItem, deleteItem } from '../../state/itemviewer/actions';
+import ItemViewer from '../../packages/itemviewer/src/components';
+import { getHidden } from '../../state/itemviewer/selectors';
+import { ItemProps } from '../../packages/itemviewer/src/types';
+import { AppState } from '../../state/types';
+import { Hidden } from '../../state/itemviewer/types';
 
 export interface ItemViewerContainerProps {
   items: ItemProps[];
@@ -15,7 +15,7 @@ export interface ItemViewerContainerProps {
   [propName: string]: any;
 }
 
-function ItemViewerContainer({
+function ItemsPage({
   items = [],
   ...other
 }: ItemViewerContainerProps): JSX.Element {
@@ -43,4 +43,4 @@ function ItemViewerContainer({
   );
 }
 
-export default ItemViewerContainer;
+export default ItemsPage;

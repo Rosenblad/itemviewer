@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import Fuse from 'fuse.js';
-import { Option } from '../../containers/SearchContainer/types';
+import { Option } from '../../state/search/types';
 
 export interface SearchProps {
   items: Option[];

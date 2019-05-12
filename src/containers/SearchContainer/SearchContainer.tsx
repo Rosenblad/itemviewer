@@ -2,8 +2,11 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Search from '../../components/Search';
-import { getAutocompleteData, AutoCompleteData } from './selectors';
-import { setVisibleItems } from './actions';
+import {
+  getAutocompleteData,
+  AutoCompleteData,
+} from '../../state/search/selectors';
+import { setVisibleItems } from '../../state/search/actions';
 import { AppState } from '../../state/types';
 
 export default function SearchContainer(): JSX.Element {

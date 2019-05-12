@@ -2,6 +2,7 @@
 
 > Sorted by priority.
 
+- Restructure to use route pattern instead of container pattern
 - Rewrite Item component
 - Implement CSS Grid
 - Clean up dependencies

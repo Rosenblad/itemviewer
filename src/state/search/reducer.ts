@@ -1,4 +1,4 @@
-import { updateObject } from '../../state/reducerUtils';
+import { updateObject } from '../reducerUtils';
 import {
   SET_VISIBLE_ITEMS,
   SetVisibileItemsAction,

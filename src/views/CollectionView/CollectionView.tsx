@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 
 import SearchContainer from '../../containers/SearchContainer';
-import ItemViewerContainer from '../../containers/ItemViewerContainer';
+import ItemsPage from '../../pages/items/ItemsPage';
 import { getCollectionItemsByCollectionId } from '../../state/entities/selectors';
 import Collection404 from './Collection404';
 import { AppState } from '../../state/types';
@@ -20,7 +20,7 @@ export default function CollectionView({
   );
 
   if (items.length > 0) {
-    return <ItemViewerContainer items={items} toolbar={<SearchContainer />} />;
+    return <ItemsPage items={items} toolbar={<SearchContainer />} />;
   }
 
   return <Collection404 />;

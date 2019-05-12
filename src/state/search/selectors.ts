@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
-import { getItems } from '../../state/entities/selectors';
-import { ItemEntity } from '../../state/entities/types';
+import { getItems } from '../entities/selectors';
+import { ItemEntity } from '../entities/types';
 
 export interface AutoCompleteData {
   value: string;

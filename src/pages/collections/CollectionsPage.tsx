@@ -2,16 +2,16 @@ import React, { useState, FormEvent, SyntheticEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'uuid';
 
-import { Collections } from '../state/collectionviewer/types';
-import CollectionViewer from '../packages/collectionviewer/src/components/CollectionViewer';
-import { getCollections } from '../state/collectionviewer/selectors';
+import { Collections } from '../../state/collectionviewer/types';
+import CollectionViewer from '../../packages/collectionviewer/src/components/CollectionViewer';
+import { getCollections } from '../../state/collectionviewer/selectors';
 import {
   addCollection,
   removeCollection,
-} from '../state/collectionviewer/actions';
-import { AppState } from '../state/types';
+} from '../../state/collectionviewer/actions';
+import { AppState } from '../../state/types';
 
-function CollectionViewerContainer(): JSX.Element {
+function CollectionsPage(): JSX.Element {
   const [name, setName] = useState('');
   const collections = useSelector(
     (state: AppState): Collections => getCollections(state),
@@ -48,4 +48,4 @@ function CollectionViewerContainer(): JSX.Element {
   );
 }
 
-export default CollectionViewerContainer;
+export default CollectionsPage;
