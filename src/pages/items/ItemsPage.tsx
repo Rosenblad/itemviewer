@@ -1,10 +1,9 @@
 import React from 'react';
-import { forceCheck } from 'react-lazyload';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideItem, deleteItem } from '../../state/itemviewer/actions';
 import ItemViewer from '../../packages/itemviewer/src/components';
 import { getHidden } from '../../state/itemviewer/selectors';
-import { ItemProps } from '../../packages/itemviewer/src/types';
+import { ItemProps } from '../../packages/itemviewer';
 import { AppState } from '../../state/types';
 import { Hidden } from '../../state/itemviewer/types';
 
@@ -15,7 +14,7 @@ export interface ItemViewerContainerProps {
   [propName: string]: any;
 }
 
-function ItemsPage({
+export default function ItemsPage({
   items = [],
   ...other
 }: ItemViewerContainerProps): JSX.Element {
@@ -24,12 +23,10 @@ function ItemsPage({
 
   const handleHide = (id: string): void => {
     dispatch(hideItem(id));
-    forceCheck();
   };
 
   const handleDelete = (id: string): void => {
     dispatch(deleteItem(id));
-    forceCheck();
   };
 
   return (
@@ -42,5 +39,3 @@ function ItemsPage({
     />
   );
 }
-
-export default ItemsPage;

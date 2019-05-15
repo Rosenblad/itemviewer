@@ -1,10 +1,10 @@
 import React from 'react';
-import { ItemProps } from '../types';
+import { ItemProps } from './Item';
 import ListItems from './ListItems';
 import './Viewer.css';
 import { Hidden } from '../../../../state/itemviewer/types';
 
-interface ItemViewerProps {
+export interface ItemViewerProps {
   items: ItemProps[];
   hidden: Hidden;
   toolbar?: JSX.Element | null;
@@ -12,7 +12,7 @@ interface ItemViewerProps {
   onHide(id: string): void;
 }
 
-function ItemViewer({
+export default function ItemViewer({
   items,
   onDelete,
   onHide,
@@ -31,5 +31,3 @@ function ItemViewer({
     </div>
   );
 }
-
-export default ItemViewer;

@@ -6,7 +6,7 @@
     "start": "react-scripts start",
     "test": "jest .",
     "parse": "node src/parser/index.js",
-    "ts": "tsc -w",
+    "ts": "tsc -w --noEmit",
     "lint": "eslint ./src --ignore-path .gitignore --ext ts,tsx"
   },
   "dependencies": {
@@ -52,7 +52,6 @@
     "react": "16.8.6",
     "react-dev-utils": "^8.0.0",
     "react-dom": "16.8.6",
-    "react-lazyload": "2.5.0",
     "react-redux": "7.1.0-alpha.4",
     "react-router": "5.0.0",
     "react-router-dom": "5.0.0",

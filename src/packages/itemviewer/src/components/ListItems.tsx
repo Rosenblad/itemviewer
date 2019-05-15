@@ -1,17 +1,19 @@
 import React from 'react';
-import { ItemProps } from '../types';
-import Item from './Item';
+import Item, { ItemProps } from './Item';
 
-interface IProps {
+export interface ListItemsProps {
   items: ItemProps[];
   hidden: string[];
   onHide?(id: string): void;
   onDelete?(id: string): void;
 }
 
-function ListItems(props: IProps): JSX.Element {
-  const { items, onDelete, onHide, hidden } = props;
-
+export default function ListItems({
+  items = [],
+  onDelete,
+  onHide,
+  hidden = [],
+}: ListItemsProps): JSX.Element {
   return (
     <div className="ListItems">
       {items.map(
@@ -23,10 +25,3 @@ function ListItems(props: IProps): JSX.Element {
     </div>
   );
 }
-
-ListItems.defaultProps = {
-  hidden: [],
-  items: [],
-};
-
-export default ListItems;

@@ -13,7 +13,7 @@ const IconWrapper = styled.div`
 export default function DeleteIcon(): JSX.Element {
   return (
     <IconWrapper>
-      <img src={DeleteIconSvg} />
+      <img src={DeleteIconSvg} alt="Delete" />
     </IconWrapper>
   );
 }

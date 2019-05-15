@@ -1,11 +1,27 @@
 import React from 'react';
 import classnames from 'classnames';
-import LazyLoad from 'react-lazyload';
-import { ItemProps } from '../../types';
 import Actions from './Actions';
 import './Item.css';
 
-function Item({
+export interface ItemProps {
+  id: string;
+  component?: React.ReactType;
+  children?: React.ReactNode;
+  hidden?: boolean;
+  url?: string | null;
+  price?: string | number;
+  layout?: 'grid' | 'list';
+  image?: string;
+  title?: string;
+  subtitle?: string;
+  other?: [];
+  discount?: string;
+  discountedPrice?: string;
+  onHide?(id: string): void;
+  onDelete?(id: string): void;
+}
+
+export default function Item({
   component = 'a',
   discount,
   discountedPrice,
@@ -56,16 +72,7 @@ function Item({
       <Component className="Item-actionArea" {...componentProps}>
         {image && (
           <div className="image">
-            <LazyLoad
-              height={180}
-              offset={200}
-              once
-              placeholder={
-                <div style={{ background: '#f4f4f4', height: 180 }} />
-              }
-            >
-              <img src={image} alt="" />
-            </LazyLoad>
+            <img src={image} alt={title} />
           </div>
         )}
         <div className="Item-content content">
@@ -85,5 +92,3 @@ function Item({
     </div>
   );
 }
-
-export default Item;
