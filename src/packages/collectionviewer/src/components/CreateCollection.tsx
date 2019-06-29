@@ -34,7 +34,9 @@ interface CreateCollectionProps {
   value: string;
 }
 
-function CreateCollection(props: CreateCollectionProps): JSX.Element {
+export default function CreateCollection(
+  props: CreateCollectionProps,
+): JSX.Element {
   const { onSubmit, onChange, value } = props;
 
   return (
@@ -44,5 +46,3 @@ function CreateCollection(props: CreateCollectionProps): JSX.Element {
     </Form>
   );
 }
-
-export default CreateCollection;

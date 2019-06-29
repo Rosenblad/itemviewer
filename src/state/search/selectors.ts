@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import { getItems } from '../entities/selectors';
-import { ItemEntity } from '../entities/types';
 
 export interface AutoCompleteData {
   value: string;
@@ -9,9 +8,9 @@ export interface AutoCompleteData {
 
 export const getAutocompleteData = createSelector(
   [getItems],
-  (items: ItemEntity[]): AutoCompleteData[] => {
+  (items): AutoCompleteData[] => {
     return items.map(
-      (item: ItemEntity): AutoCompleteData => ({
+      (item): AutoCompleteData => ({
         value: item.title,
         label: item.title,
       }),

@@ -1,9 +1,14 @@
-import { ItemEntity } from '../entities/types';
+import { Item } from '../itemviewer/types';
+
+export interface CollectionItem {
+  collectionId: string;
+  itemIds: readonly string[];
+}
 
 export interface Collection {
   id: string;
   name: string;
-  items?: ItemEntity[];
+  items?: Item[];
 }
 
 export type Collections = Collection[];

@@ -1,15 +1,21 @@
-interface Normalized {
-  byId: {};
-  allIds: string[];
+export interface Normalized<T> {
+  byId: {
+    [id: string]: T;
+  };
+  allIds: readonly string[];
 }
 
-export function normalize<T extends { id: string }>(entities: T[]): Normalized {
+export function normalize<T extends { id: string }>(
+  entities: T[] | T,
+): Normalized<T> {
   const byId = {};
   const allIds: string[] = [];
 
   if (!entities) return { byId, allIds };
 
-  entities.forEach(
+  const entitiesArr = Array.isArray(entities) ? entities : [entities];
+
+  entitiesArr.forEach(
     (e: T): void => {
       byId[e.id] = e;
       allIds.push(e.id);
@@ -19,6 +25,13 @@ export function normalize<T extends { id: string }>(entities: T[]): Normalized {
   return {
     byId,
     allIds,
+  };
+}
+
+export function merge<T>(n1: Normalized<T>, n2: Normalized<T>): Normalized<T> {
+  return {
+    byId: { ...n1.byId, ...n2.byId },
+    allIds: [...n1.allIds, ...n2.allIds],
   };
 }
 

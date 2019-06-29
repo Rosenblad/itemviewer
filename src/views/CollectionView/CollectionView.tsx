@@ -7,7 +7,7 @@ import ItemsPage from '../../pages/items/ItemsPage';
 import { getCollectionItemsByCollectionId } from '../../state/entities/selectors';
 import Collection404 from './Collection404';
 import { AppState } from '../../state/types';
-import { ItemEntity } from '../../state/entities/types';
+import { Item } from '../../state/itemviewer/types';
 
 export default function CollectionView({
   match: {
@@ -15,7 +15,7 @@ export default function CollectionView({
   },
 }: RouteComponentProps<{ collectionId: string }>): JSX.Element {
   const items = useSelector(
-    (state: AppState): ItemEntity[] | [] =>
+    (state: AppState): Item[] | [] =>
       getCollectionItemsByCollectionId(state, collectionId),
   );
 

@@ -1,16 +1,8 @@
 import { createSelector } from 'reselect';
 import { AppState } from '../types';
-import {
-  EntitiesState,
-  CollectionsEntity,
-  ItemsEntity,
-  CollectionItemsEntity,
-  CollectionEntity,
-  CollectionItem,
-  ItemsById,
-  ItemEntity,
-  CollectionItemsById,
-} from './types';
+import { EntitiesState } from './types';
+import { Collection } from '../collectionviewer/types';
+import { Item } from '../itemviewer/types';
 
 export function getEntities(state: AppState): EntitiesState {
   return state.entities;
@@ -22,17 +14,17 @@ export function getEntities(state: AppState): EntitiesState {
 
 export const getCollectionsEntity = createSelector(
   [getEntities],
-  (entities: EntitiesState): CollectionsEntity => entities.collections,
+  (entities): EntitiesState['collections'] => entities.collections,
 );
 
 export const getItemsEntity = createSelector(
   [getEntities],
-  (entities: EntitiesState): ItemsEntity => entities.items,
+  (entities): EntitiesState['items'] => entities.items,
 );
 
 export const getCollectionItemsEntity = createSelector(
   [getEntities],
-  (entities: EntitiesState): CollectionItemsEntity => entities.collectionItems,
+  (entities): EntitiesState['collectionItems'] => entities.collectionItems,
 );
 
 /**
@@ -42,7 +34,7 @@ export const getCollectionItemsEntity = createSelector(
 export const getCollectionById = (
   state: AppState,
   collectionId: string,
-): CollectionEntity | false => {
+): Collection | false => {
   if (!collectionId) return false;
 
   return getCollectionsEntity(state).byId[collectionId];
@@ -51,15 +43,13 @@ export const getCollectionById = (
 export const getCollectionItemsByCollectionId = (
   state: AppState,
   collectionId: string,
-): ItemEntity[] | [] => {
+): Item[] | [] => {
   if (!collectionId) return [];
 
-  const collectionItemsById: CollectionItemsById = getCollectionItemsEntity(
-    state,
-  ).byId;
+  const collectionItemsById = getCollectionItemsEntity(state).byId;
 
   const collectionItem = Object.values(collectionItemsById).find(
-    (collectionItemTemp: CollectionItem): boolean =>
+    (collectionItemTemp): boolean =>
       collectionItemTemp.collectionId === collectionId,
   );
 
@@ -67,9 +57,9 @@ export const getCollectionItemsByCollectionId = (
 
   const { itemIds } = collectionItem;
 
-  const itemsById: ItemsById = getItemsEntity(state).byId;
+  const itemsById = getItemsEntity(state).byId;
 
-  return itemIds.map((id: string): ItemEntity => itemsById[id]);
+  return itemIds.map((id: string): Item => itemsById[id]);
 };
 
 /**
@@ -78,9 +68,9 @@ export const getCollectionItemsByCollectionId = (
 
 export const getItems = createSelector(
   [getItemsEntity],
-  (entity: ItemsEntity): ItemEntity[] => {
+  (entity): Item[] => {
     const { byId, allIds } = entity;
 
-    return allIds.map((id: string): ItemEntity => byId[id]);
+    return allIds.map((id: string): Item => byId[id]);
   },
 );

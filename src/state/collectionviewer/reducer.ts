@@ -1,21 +1,12 @@
 import { removeItemInArray, updateObject } from '../reducerUtils';
 import {
-  ADD_COLLECTION,
   REMOVE_COLLECTION,
   ADD_ITEMS_TO_COLLECTION,
   CollectionViewerState,
-  AddCollectionAction,
   Collection,
   AddItemsToCollectionAction,
   RemoveCollectionAction,
 } from './types';
-
-function addCollection(
-  state: CollectionViewerState,
-  action: AddCollectionAction,
-): CollectionViewerState {
-  return state.concat(action.collection);
-}
 
 function removeCollection(
   state: CollectionViewerState,
@@ -44,8 +35,6 @@ export default function collectionsReducer(
   action: any,
 ): CollectionViewerState {
   switch (action.type) {
-    case ADD_COLLECTION:
-      return addCollection(state, action);
     case REMOVE_COLLECTION:
       return removeCollection(state, action);
     case ADD_ITEMS_TO_COLLECTION:

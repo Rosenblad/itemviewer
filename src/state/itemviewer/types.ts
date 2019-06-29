@@ -1,3 +1,14 @@
+export interface Item {
+  id: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  discount: string;
+  discountedPrice: string;
+  src: string;
+}
+
 export type Hidden = string[] | [];
 
 export interface ItemViewerState {

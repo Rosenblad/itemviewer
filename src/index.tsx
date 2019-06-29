@@ -3,17 +3,16 @@ import ReactDOM from 'react-dom';
 import uuid from 'uuid';
 import { Store } from 'redux';
 
-// import { createCollection } from 'state/actions/collection';
-// import { addItems } from 'state/actions/item';
 import App from './App';
 import configureStore from './state/store/configureStore';
 // import { loadState, saveState } from 'libs/storage';
 import { saveState } from './state/libs/localStorage';
 import { loadDataSuccess } from './state/actions';
 import items from './state/data/zalando';
-import './index.css';
-import { ItemEntity } from './state/entities/types';
+import { Item } from './state/itemviewer/types';
 import { AppState } from './state/types';
+
+import './index.css';
 
 // const persistedState = loadState();
 // const store = configureStore(persistedState);
@@ -33,7 +32,7 @@ const collectionItems = [
   {
     id: uuid.v4(),
     collectionId,
-    itemIds: items.map((item: ItemEntity): string => item.id),
+    itemIds: items.map((item: Item): string => item.id),
   },
 ];
 
