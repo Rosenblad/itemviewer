@@ -11,7 +11,7 @@ declare namespace window {
 
 export default function configureStore(
   initialState?: DeepPartial<AppState>,
-): Store {
+): Store<AppState> {
   const store = createStore(
     rootReducer,
     initialState,
@@ -20,15 +20,12 @@ export default function configureStore(
   );
 
   if (module.hot) {
-    module.hot.accept(
-      '../rootReducer',
-      (): void => {
-        // eslint-disable-next-line global-require
-        const nextReducer = require('../rootReducer').default;
+    module.hot.accept('../rootReducer', (): void => {
+      // eslint-disable-next-line global-require
+      const nextReducer = require('../rootReducer').default;
 
-        store.replaceReducer(nextReducer);
-      },
-    );
+      store.replaceReducer(nextReducer);
+    });
   }
 
   return store;

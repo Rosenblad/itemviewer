@@ -41,7 +41,12 @@ export default function CreateCollection(
 
   return (
     <Form name="create-collection" onSubmit={onSubmit}>
-      <Input type="text" onChange={onChange} value={value} />
+      <Input
+        type="text"
+        onChange={onChange}
+        value={value}
+        data-testid="create-collection-input"
+      />
       <Button type="submit">Create</Button>
     </Form>
   );
