@@ -2,6 +2,7 @@
 
 > Sorted by priority.
 
+- Discard item-ui
 - Restructure to use route pattern instead of container pattern
 - Rewrite Item component
 - Implement CSS Grid
@@ -17,13 +18,12 @@
 - Quick preview more info
 - Save list for later
 - Preload url and open in app
-- Add tests
 
 # Specification
 
 Itemviewer allows you to browse and sort through items from collections of data visually.
 
-## The item
+## ItemViewer
 
 __Functionality__
 
@@ -95,7 +95,7 @@ __Data table__
 | id   | number | 0     |
 | name | string | null  |
 
-## The collection
+## CollectionViewer
 
 A collection stores items.
 
@@ -126,3 +126,11 @@ Persistent:
 State:
 
 - Search query
+
+## ApiBrowser
+
+- Takes an API root and query/route map
+- Calls backend passing API, query params and route
+- Backend makes a request to the API, caches and sends back the response
+- Lists results using itemviewer
+- If an item for example is deleted it's sent to the backend which remembers it
