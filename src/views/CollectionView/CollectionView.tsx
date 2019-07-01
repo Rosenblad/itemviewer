@@ -14,9 +14,8 @@ export default function CollectionView({
     params: { collectionId },
   },
 }: RouteComponentProps<{ collectionId: string }>): JSX.Element {
-  const items = useSelector(
-    (state: AppState): Item[] | [] =>
-      getCollectionItemsByCollectionId(state, collectionId),
+  const items = useSelector((state: AppState): Item[] | [] =>
+    getCollectionItemsByCollectionId(state, collectionId),
   );
 
   if (items.length > 0) {
